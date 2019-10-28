@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap");
 body {
   width: 100%;
 }
@@ -124,7 +126,7 @@ body,
 }
 body {
   background: #eee;
-  font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 16px 'Source Serif Pro', Georgia, "Times New Roman", serif;
   -webkit-text-size-adjust: 100%;
 }
 .outer {
@@ -192,7 +194,7 @@ body {
 .archive-year,
 .widget-title {
   text-decoration: none;
-  text-transform: uppercase;
+  font-variant: small-caps;
   letter-spacing: 2px;
   color: #999;
   margin-bottom: 1em;
@@ -282,7 +284,7 @@ body {
 .article-entry dl,
 .widget dl {
   margin: 0 20px;
-  line-height: 1.6em;
+  line-height: 1.5em;
 }
 .article-entry ul ul,
 .widget ul ul,
@@ -311,6 +313,7 @@ body {
   height: 60px;
   position: relative;
   border-bottom: 1px solid #ddd;
+  font-variant: small-caps;
 }
 #header:before,
 #header:after {
@@ -407,9 +410,9 @@ body {
 .nav-icon {
   font-family: FontAwesome;
   text-align: center;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
   padding: 20px 15px;
   position: relative;
   cursor: pointer;
@@ -482,7 +485,7 @@ body {
   background: none;
   color: #555;
   width: 100%;
-  font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 13px "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -510,6 +513,9 @@ body {
 .article-inner {
   overflow: hidden;
 }
+.article-meta {
+  font-variant: small-caps;
+}
 .article-meta:before,
 .article-meta:after {
   content: "";
@@ -520,6 +526,7 @@ body {
 }
 .article-date {
   float: left;
+  letter-spacing: 1px;
 }
 .article-category {
   float: left;
@@ -554,6 +561,7 @@ a.article-title:hover {
 .article-entry {
   color: #555;
   padding: 0 20px;
+  text-align: justify;
 }
 .article-entry:before,
 .article-entry:after {
@@ -565,8 +573,8 @@ a.article-title:hover {
 }
 .article-entry p,
 .article-entry table {
-  line-height: 1.6em;
-  margin: 1.6em 0;
+  line-height: 1.5em;
+  margin: 1.5em 0;
 }
 .article-entry h1,
 .article-entry h2,
@@ -595,8 +603,8 @@ a.article-title:hover {
 .article-entry ul,
 .article-entry ol,
 .article-entry dl {
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 .article-entry img,
 .article-entry video {
@@ -623,15 +631,15 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Source Serif Pro', Georgia, "Times New Roman", serif;
   font-size: 1.4em;
-  margin: 1.6em 20px;
+  margin: 1.5em 20px;
   text-align: center;
 }
 .article-entry blockquote footer {
-  font-size: 14px;
-  margin: 1.6em 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  margin: 1.5em 0;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -692,9 +700,9 @@ a.article-title:hover {
 }
 .article-footer {
   font-size: 0.85em;
-  line-height: 1.6em;
+  line-height: 1.5em;
   border-top: 1px solid #ddd;
-  padding-top: 1.6em;
+  padding-top: 1.5em;
   margin: 0 20px 20px;
 }
 .article-footer:before,
@@ -802,8 +810,8 @@ a.article-title:hover {
   }
 }
 .article-nav-caption {
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-variant: small-caps;
+  letter-spacing: -1px;
   color: #ddd;
   line-height: 1em;
   font-weight: bold;
@@ -813,7 +821,7 @@ a.article-title:hover {
 }
 .article-nav-title {
   font-size: 0.85em;
-  line-height: 1.6em;
+  line-height: 1.5em;
   margin-top: 0.5em;
 }
 .article-share-box {
@@ -836,7 +844,7 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 14px "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   padding: 0 15px;
   color: #555;
   outline: none;
@@ -1004,7 +1012,7 @@ a.article-title:hover {
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
   transition: color 0.2s;
-  line-height: 1.6em;
+  line-height: 1.5em;
 }
 .archive-article-title:hover {
   color: #258fb8;
@@ -1088,7 +1096,7 @@ a.article-title:hover {
   text-decoration: underline;
 }
 #footer-info {
-  line-height: 1.6em;
+  line-height: 1.5em;
   font-size: 0.85em;
 }
 .article-entry pre,
@@ -1101,7 +1109,7 @@ a.article-title:hover {
   border-width: 1px 0;
   overflow: auto;
   color: #ccc;
-  line-height: 22.400000000000002px;
+  line-height: 24px;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -1157,7 +1165,7 @@ a.article-title:hover {
   padding-right: 20px;
 }
 .article-entry .highlight .line {
-  height: 22.400000000000002px;
+  height: 24px;
 }
 .article-entry .highlight .line.marked {
   background: #515151;
@@ -1195,7 +1203,7 @@ a.article-title:hover {
 .article-entry .gist .gist-file .gist-meta {
   background: #2d2d2d;
   color: #999;
-  font: 0.85em -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 0.85em "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
@@ -1298,6 +1306,9 @@ pre .javascript .function {
 .widget-wrap {
   margin: 50px 0;
 }
+.widget-title {
+  letter-spacing: 1px;
+}
 .widget {
   color: #777;
   text-shadow: 0 1px #fff;
@@ -1339,6 +1350,8 @@ pre .javascript .function {
 }
 .authname {
   padding-left: 10px;
+  font-variant: small-caps;
+  letter-spacing: 2px;
   font-size: 2em;
   font-weight: bold;
   color: #555;
@@ -1348,7 +1361,7 @@ pre .javascript .function {
   font-size: 1.2em;
 }
 .widget {
-  line-height: 1.6em;
+  line-height: 1.5em;
   word-wrap: break-word;
   font-size: 0.9em;
 }
