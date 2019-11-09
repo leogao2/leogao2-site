@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+        <!--
+            What brings you to these parts, fellow adventurer?
+        -->
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146499048-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Converting HuggingFace GPT2 Models to Tensorflow 1.x | Leo Gao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
+<meta name="keywords" content="Machine Learning,Language Models,GPT2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Converting HuggingFace GPT2 Models to Tensorflow 1.x">
+<meta property="og:url" content="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/index.html">
+<meta property="og:site_name" content="Leo Gao">
+<meta property="og:description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-09T20:18:37.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Converting HuggingFace GPT2 Models to Tensorflow 1.x">
+<meta name="twitter:description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
+<meta name="twitter:creator" content="@nabla_theta">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><script src="/js/prism.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://leogao.dev"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Converting-HuggingFace-GPT2-Models-to-Tensorflow-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <div class="article-date">
+  Created: <time datetime="2019-11-09T07:00:00.000Z" itemprop="datePublished">2019-11-09</time>&emsp;
+  Modified: <time datetime="2019-11-09T07:00:00.000Z" itemprop="datePublished">2019-11-09</time>
+</div>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Converting HuggingFace GPT2 Models to Tensorflow 1.x
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">HuggingFace Transformers</a> is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code published by OpenAI. Unfortunately, the model format is different between the TF 2.x models and the original code, which makes it difficult to use models trained on the new code using the old code. There are many tools for converting the old format to TF 2.x and Pytorch, but not vice versa. In this blog post, I will go through the various challenges of backporting the new model format. </p>
+<h1 id="I-just-want-to-use-the-final-result"><a href="#I-just-want-to-use-the-final-result" class="headerlink" title="I just want to use the final result"></a>I just want to use the final result</h1><p>The final code is available <a href="https://github.com/leogao2/gpt2-hf-to-tf1" target="_blank" rel="noopener">here</a>.</p>
+<h1 id="First-Attempt"><a href="#First-Attempt" class="headerlink" title="First Attempt"></a>First Attempt</h1><p>My first attempt was to use <code>TFGPT2LMHeadModel</code> to load in tensorflow and save a checkpoint immediately using <code>save_pretrained</code>. However, I immediately ran into a problem: <code>save_pretrained</code> saves the result as an HDF5 file, instead of as a TF checkpoint. After some mucking around, I found that the <code>save_pretrained</code> methos called the <code>save_weights</code> method with a fixed <code>tf_model.h5</code> filename, which inferred the save format via the extension- HDF5 for <code>.h5</code> and TF checkpoint otherwise. The solution was just to call <code>save_weights</code> directly, bypassing the filename. For some reason, this wouldn’t save the <code>.meta</code> file containing the graph, but since the graph was the same as in the original OpenAI checkpoints, they could just be copied over. </p>
+<p>The model checkpoint contained about the right files, so I put it in the models directory, and.. it didn’t work. </p>
+<h1 id="Second-Attempt"><a href="#Second-Attempt" class="headerlink" title="Second Attempt"></a>Second Attempt</h1><p>Apparently, due to the use of keras wrappers (and differently names variables), the exported names were significantly different; <code>model/h0/attn/c_attn/w</code> in the OpenAI model was <code>transformer/h/0/attn/c_attn/weight/.ATTRIBUTES/VARIABLE_VALUE</code> in the huggingface tf model! I found a <a href="https://gist.github.com/batzner/7c24802dd9c5e15870b4b56e22135c96" target="_blank" rel="noopener">script for renaming tf variables in checkpoints</a> and painstakingly combed through the differences in variable names to produce this hodgepodge of replaces:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">new_name = new_name[12:].replace(&apos;/.ATTRIBUTES/VARIABLE_VALUE&apos;, &apos;&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;weight&apos;, &apos;w&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;bias&apos;, &apos;b&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;beta&apos;, &apos;b&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;gamma&apos;, &apos;g&apos;)</span><br><span class="line">if &apos;wpe&apos; in new_name:</span><br><span class="line">    new_name = &apos;wpe&apos;</span><br><span class="line">if &apos;wte&apos; in new_name:</span><br><span class="line">    new_name = &apos;wte&apos;</span><br><span class="line">new_name = &apos;model/&apos; + new_name</span><br><span class="line">new_name = new_name.replace(&apos;/h/&apos;, &apos;/h&apos;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/" data-id="ck2s0ihml0000r9ml99pwisuv" class="article-share-link">Share</a>
+      
+        <a href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPT2/">GPT2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language-Models/">Language Models</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">About Me</h3>
+    <ul class="about-me">
+      
+      <li><div class="avatar"><img class="ava-img" title="About me" src="/images/profile.png" /></div></li>
+      
+      <div class="authname">Leo Gao</div>
+      <div class="sdesc">Hello! I am a random internet person who likes to tinker around with software.</div>
+    </ul>
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+
+
+  </div>
+  
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget recentposts">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/">Converting HuggingFace GPT2 Models to Tensorflow 1.x</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/">The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/20/Hello-World/">Hello, World!</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Leo Gao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'blogotorium';
+  
+  var disqus_url = 'https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

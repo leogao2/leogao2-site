@@ -26,16 +26,14 @@ ga('send', 'pageview');
   
   <title>Leo Gao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Software Developer">
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Leo Gao">
 <meta property="og:url" content="https://leogao.dev/index.html">
 <meta property="og:site_name" content="Leo Gao">
-<meta property="og:description" content="Software Developer">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leo Gao">
-<meta name="twitter:description" content="Software Developer">
+<meta name="twitter:creator" content="@nabla_theta">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,8 +41,8 @@ ga('send', 'pageview');
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css'><!-- hexo-inject:end -->
-</head>
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><script src="/js/prism.js"></script><!-- hexo-inject:begin --><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css'><!-- hexo-inject:end --></head>
 </html>
 <body>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
@@ -79,6 +77,52 @@ ga('send', 'pageview');
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Converting-HuggingFace-GPT2-Models-to-Tensorflow-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <div class="article-date">
+  Created: <time datetime="2019-11-09T07:00:00.000Z" itemprop="datePublished">2019-11-09</time>&emsp;
+  Modified: <time datetime="2019-11-09T07:00:00.000Z" itemprop="datePublished">2019-11-09</time>
+</div>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/">Converting HuggingFace GPT2 Models to Tensorflow 1.x</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">HuggingFace Transformers</a> is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code published by OpenAI. Unfortunately, the model format is different between the TF 2.x models and the original code, which makes it difficult to use models trained on the new code using the old code. There are many tools for converting the old format to TF 2.x and Pytorch, but not vice versa. In this blog post, I will go through the various challenges of backporting the new model format. </p>
+<h1 id="I-just-want-to-use-the-final-result"><a href="#I-just-want-to-use-the-final-result" class="headerlink" title="I just want to use the final result"></a>I just want to use the final result</h1><p>The final code is available <a href="https://github.com/leogao2/gpt2-hf-to-tf1" target="_blank" rel="noopener">here</a>.</p>
+<h1 id="First-Attempt"><a href="#First-Attempt" class="headerlink" title="First Attempt"></a>First Attempt</h1><p>My first attempt was to use <code>TFGPT2LMHeadModel</code> to load in tensorflow and save a checkpoint immediately using <code>save_pretrained</code>. However, I immediately ran into a problem: <code>save_pretrained</code> saves the result as an HDF5 file, instead of as a TF checkpoint. After some mucking around, I found that the <code>save_pretrained</code> methos called the <code>save_weights</code> method with a fixed <code>tf_model.h5</code> filename, which inferred the save format via the extension- HDF5 for <code>.h5</code> and TF checkpoint otherwise. The solution was just to call <code>save_weights</code> directly, bypassing the filename. For some reason, this wouldn’t save the <code>.meta</code> file containing the graph, but since the graph was the same as in the original OpenAI checkpoints, they could just be copied over. </p>
+<p>The model checkpoint contained about the right files, so I put it in the models directory, and.. it didn’t work. </p>
+<h1 id="Second-Attempt"><a href="#Second-Attempt" class="headerlink" title="Second Attempt"></a>Second Attempt</h1><p>Apparently, due to the use of keras wrappers (and differently names variables), the exported names were significantly different; <code>model/h0/attn/c_attn/w</code> in the OpenAI model was <code>transformer/h/0/attn/c_attn/weight/.ATTRIBUTES/VARIABLE_VALUE</code> in the huggingface tf model! I found a <a href="https://gist.github.com/batzner/7c24802dd9c5e15870b4b56e22135c96" target="_blank" rel="noopener">script for renaming tf variables in checkpoints</a> and painstakingly combed through the differences in variable names to produce this hodgepodge of replaces:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">new_name = new_name[12:].replace(&apos;/.ATTRIBUTES/VARIABLE_VALUE&apos;, &apos;&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;weight&apos;, &apos;w&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;bias&apos;, &apos;b&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;beta&apos;, &apos;b&apos;)</span><br><span class="line">new_name = new_name.replace(&apos;gamma&apos;, &apos;g&apos;)</span><br><span class="line">if &apos;wpe&apos; in new_name:</span><br><span class="line">    new_name = &apos;wpe&apos;</span><br><span class="line">if &apos;wte&apos; in new_name:</span><br><span class="line">    new_name = &apos;wte&apos;</span><br><span class="line">new_name = &apos;model/&apos; + new_name</span><br><span class="line">new_name = new_name.replace(&apos;/h/&apos;, &apos;/h&apos;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/" data-id="ck2s0ihml0000r9ml99pwisuv" class="article-share-link">Share</a>
+      
+        <a href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPT2/">GPT2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language-Models/">Language Models</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -127,7 +171,7 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" data-id="ck29tboql0001nbmlsbkzgg7v" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" data-id="ck29vaoi70001bfml99fndwjn" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -169,7 +213,7 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2019/09/20/Hello-World/" data-id="ck29tboqi0000nbml2cmz44c0" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2019/09/20/Hello-World/" data-id="ck29vaoi40000bfmlnsp9hluf" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2019/09/20/Hello-World/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -197,6 +241,9 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
       <div class="authname">Leo Gao</div>
       <div class="sdesc">Hello! I am a random internet person who likes to tinker around with software.</div>
     </ul>
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+
+
   </div>
   
   
@@ -205,6 +252,10 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget recentposts">
       <ul>
+        
+          <li>
+            <a href="/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/">Converting HuggingFace GPT2 Models to Tensorflow 1.x</a>
+          </li>
         
           <li>
             <a href="/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/">The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview</a>
