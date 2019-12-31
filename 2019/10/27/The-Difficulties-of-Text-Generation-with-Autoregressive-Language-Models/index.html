@@ -27,20 +27,22 @@ ga('send', 'pageview');
   <title>The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview | Leo Gao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Interest in text-generating models has been rekindled in the past year—in large part due to GPT2, which primarily demonstrates the effectiveness of using the Transformer architecture with bigger mode">
-<meta name="keywords" content="Machine Learning,Reinforcement Learning,Natural Language Processing,Language Models,GPT2">
+<meta name="keywords" content="Machine Learning,Language Models,GPT2,Reinforcement Learning,Natural Language Processing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview">
 <meta property="og:url" content="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/index.html">
 <meta property="og:site_name" content="Leo Gao">
 <meta property="og:description" content="Interest in text-generating models has been rekindled in the past year—in large part due to GPT2, which primarily demonstrates the effectiveness of using the Transformer architecture with bigger mode">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://leogao.dev/images/geb_thumbnail_cropped.jpg">
-<meta property="og:updated_time" content="2019-12-21T19:57:27.352Z">
+<meta property="og:image" content="https://leogao.dev/images/geb_thumbnail_small.jpg">
+<meta property="og:updated_time" content="2019-12-30T06:14:22.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview">
 <meta name="twitter:description" content="Interest in text-generating models has been rekindled in the past year—in large part due to GPT2, which primarily demonstrates the effectiveness of using the Transformer architecture with bigger mode">
-<meta name="twitter:image" content="https://leogao.dev/images/geb_thumbnail_cropped.jpg">
+<meta name="twitter:image" content="https://leogao.dev/images/geb_thumbnail_small.jpg">
 <meta name="twitter:creator" content="@nabla_theta">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo Gao" type="application/atom+xml">
   
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -84,16 +86,20 @@ ga('send', 'pageview');
         
           <a class="main-nav-link" href="/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="https://twitter.com/nabla_theta">Twitter</a>
+        
+          <a class="main-nav-link" href="https://github.com/leogao2">Github</a>
         
       </nav>
       <nav id="sub-nav">
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <!-a id="nav-search-btn" class="nav-icon" title="Search"></a-->
       </nav>
-      <div id="search-form-wrap">
+      <!--div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://leogao.dev"></form>
-      </div>
+      </div-->
     </div>
   </div>
 </header>
@@ -121,7 +127,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/images/geb_thumbnail_cropped.jpg" alt="Book: Gödel, Escher, Bach"></p>
+        <p><img src="/images/geb_thumbnail_small.jpg" alt="Book: Gödel, Escher, Bach"></p>
 <p>Interest in text-generating models has been rekindled in the past year—in large part due to <a href="https://openai.com/blog/better-language-models/" target="_blank" rel="noopener">GPT2</a>, which primarily demonstrates the effectiveness of using the Transformer architecture with <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank" rel="noopener">bigger models, bigger data, and bigger compute</a>. Notably, this model achieved <a href="https://paperswithcode.com/sota/language-modelling-on-wikitext-103" target="_blank" rel="noopener">SOTA results on several language modelling datasets</a> without even training on those datasets, showing its impressive generalization capabilities. Following GPT2, several other entities have also jumped on the bandwagon and released their own large unidirectional language models, such as: <a href="https://rowanzellers.com/grover/" target="_blank" rel="noopener">Grover</a>, <a href="https://nv-adlr.github.io/MegatronLM" target="_blank" rel="noopener">Nvidia’s Megatron-LM</a>, and <a href="https://einstein.ai/presentations/ctrl.pdf" target="_blank" rel="noopener">Salesforce’s CTRL</a>. Setting aside the controversy surrounding OpenAI’s claims that the model is “too dangerous to release,” the text generated by GPT2 are undeniably far better than previous text generation models. However, these models also exhibit some flaws that may not be fixable purely using the bigger-model paradigm. In this post, we take a quick look at some of these flaws and the attempts to solve them, and discuss some potential directions for future research.</p>
 <h2 id="What-is-an-autoregressive-language-model-and-why-does-it-matter"><a href="#What-is-an-autoregressive-language-model-and-why-does-it-matter" class="headerlink" title="What is an autoregressive language model and why does it matter?"></a>What is an autoregressive language model and why does it matter?</h2><p>The core problem of language modelling is approximating the distribution of natural language sequences occurring in English (or Lojban, Navajo, Python, etc) using a parameterized function. To make modelling more manageable, the autoregressive language model formulation factors the ideal language model <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>p</mi><mo>∗</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">p^*(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">p</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord">∗</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> into:</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><msup><mi>p</mi><mo>∗</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo>≈</mo><msubsup><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi></mrow></msubsup><msub><mover accent="true"><mrow><mi>p</mi></mrow><mo>^</mo></mover><mi>θ</mi></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>x</mi><mrow><mo>&lt;</mo><mi>i</mi></mrow></msub><mo>)</mo></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{aligned}
@@ -146,7 +152,7 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" data-id="ck3xonzzu0002roml3yrarty5" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" data-id="ck4hai2yc0003q7mlfxz20j90" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -187,10 +193,13 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
 </section>
 </section>
         
-          <aside id="sidebar">
-  
+          <aside class="sidebar sidebar-left">
+    <div class="leftfnbegin"></div>
+</aside>
+<aside class="sidebar sidebar-right">
     
-  <div class="widget-wrap">
+      
+  <div class="widget-wrap sidebar-align">
     <h3 class="widget-title">About Me</h3>
     <ul class="about-me">
       
@@ -204,12 +213,16 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
 
   </div>
   
-  
     
-  <div class="widget-wrap">
+      
+  <div class="widget-wrap sidebar-align">
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget recentposts">
       <ul>
+        
+          <li>
+            <a href="/2019/12/31/The-Decade-of-Deep-Learning/">The Decade of Deep Learning</a>
+          </li>
         
           <li>
             <a href="/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/">Converting HuggingFace GPT2 Models to Tensorflow 1.x</a>
@@ -227,11 +240,13 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
     </div>
   </div>
 
-  
+    
+    <div class="rightfnbegin"></div>
 </aside>
         
       </div>
-      <footer id="footer">
+      <!--
+<footer id="footer">
   
   <div class="outer">
     <div id="footer-info" class="inner">
@@ -240,13 +255,15 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
     </div>
   </div>
 </footer>
-
+-->
     </div>
     <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="https://twitter.com/nabla_theta" class="mobile-nav-link">Twitter</a>
+  
+    <a href="https://github.com/leogao2" class="mobile-nav-link">Github</a>
   
 </nav>
     
@@ -266,6 +283,7 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/footnotes.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">

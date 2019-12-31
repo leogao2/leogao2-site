@@ -94,7 +94,7 @@
 
       if (alt) $(this).after('<span class="caption">' + alt + '</span>');
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+      $(this).wrap('<a href="' + this.src + '" data-caption="' + alt + '" class="fancybox"></a>');
     });
 
     $(this).find('.fancybox').each(function(){
@@ -103,7 +103,11 @@
   });
 
   if ($.fancybox){
-    $('.fancybox').fancybox();
+    $('.fancybox').fancybox({
+        beforeShow: function() {
+            this.title = $(this.element).data("caption");
+        }
+    });
   }
 
   // Mobile nav

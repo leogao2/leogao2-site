@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Leo Gao</title>
+  <icon>https://leogao.dev/icon.png</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://leogao.dev/"/>
+  <updated>2019-12-31T04:24:44.804Z</updated>
+  <id>https://leogao.dev/</id>
+  
+  <author>
+    <name>Leo Gao</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>The Decade of Deep Learning</title>
+    <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
+    <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
+    <published>2019-12-31T07:00:00.000Z</published>
+    <updated>2019-12-31T04:24:44.804Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;span class=&quot;smallcaps&quot;&gt;As the 2010’s draw to a close&lt;/span&gt;, it’s worth taking a look back at the monumental progress that has been
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
+      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
+      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Converting HuggingFace GPT2 Models to Tensorflow 1.x</title>
+    <link href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/"/>
+    <id>https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/</id>
+    <published>2019-11-09T07:00:00.000Z</published>
+    <updated>2019-11-09T22:24:11.393Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/huggingface/transformers&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;HuggingFace Transformers&lt;/a&gt; is a wonderful suite
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
+      <category term="GPT2" scheme="https://leogao.dev/tags/GPT2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview</title>
+    <link href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/"/>
+    <id>https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/</id>
+    <published>2019-10-27T06:00:00.000Z</published>
+    <updated>2019-12-30T06:14:22.403Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/images/geb_thumbnail_small.jpg&quot; alt=&quot;Book: Gödel, Escher, Bach&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Interest in text-generating models has been rekindled
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
+      <category term="GPT2" scheme="https://leogao.dev/tags/GPT2/"/>
+    
+      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
+      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello, World!</title>
+    <link href="https://leogao.dev/2019/09/20/Hello-World/"/>
+    <id>https://leogao.dev/2019/09/20/Hello-World/</id>
+    <published>2019-09-20T06:00:00.000Z</published>
+    <updated>2019-10-27T23:48:54.205Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Hello,
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
