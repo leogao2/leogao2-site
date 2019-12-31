@@ -12,7 +12,7 @@ $(window).on("load", function() {
         console.log(toppos)
         //$(`#footnote-${i}`).css('top', `${toppos}px`)
 
-        if ((toppos < 900 || offs.left < window.innerWidth / 2 || (rightax - toppos > 300) || leftmore < -2) && !(leftax - toppos > 300)) {
+        if ((toppos < 900 || offs.left < window.innerWidth / 2 || (rightax - toppos > 200) || leftmore < -2) && !(leftax - toppos > 200)) {
             let newhtml = `<div class="floating-footnote" id="footnote-${i}" style="top: ${Math.max(leftax, toppos)}px"><span class="footnote-float-numeral">${i}</span> ${ob.innerHTML}</div>`
             $('.sidebar-left').append(newhtml)
             leftax = toppos + $(`#footnote-${i}`).outerHeight() + 30
