@@ -26,3 +26,12 @@ $(window).on("load", function() {
     })
     
 })
+
+$(window).on("load resize", function() {
+    console.log('resize', window.innerWidth)
+    if (window.innerWidth < 1295) {
+        $(".floating-footnote").css('display', 'none')
+    } else {
+        $(".floating-footnote").css('display', 'inline')
+    }
+});

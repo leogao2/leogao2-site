@@ -792,11 +792,6 @@ a.main-title:hover {
   color: #555;
   position: absolute;
 }
-@media mq-not-normal {
-  .floating-footnote {
-    display: none;
-  }
-}
 .floating-footnote a {
   color: inherit;
   text-decoration: underline;
@@ -809,6 +804,11 @@ a.main-title:hover {
 }
 .floating-footnote em {
   font-style: italic;
+}
+@media screen and (max-width: 1295px) {
+  .floating-footnote {
+    display: none;
+  }
 }
 .article-more-link a {
   display: inline-block;
