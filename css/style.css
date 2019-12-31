@@ -792,6 +792,11 @@ a.main-title:hover {
   color: #555;
   position: absolute;
 }
+@media mq-not-normal {
+  .floating-footnote {
+    display: none;
+  }
+}
 .floating-footnote a {
   color: inherit;
   text-decoration: underline;
