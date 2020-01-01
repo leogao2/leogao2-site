@@ -75,7 +75,7 @@ $(window).on("scroll", function() {
             bestpos = i
         }
 
-        if (bestpos > adjfnpos.length) bestpos = null
+        if (bestpos > adjfnpos.length || adjfnpos[bestpos] < $(window).scrollTop()) bestpos = null
 
         console.log('mobilefn:', bestpos)
         if (bestpos) {
