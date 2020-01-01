@@ -75,7 +75,7 @@ $(window).on("scroll", function() {
             bestpos = i
         }
 
-        if (bestpos >= adjfnpos.length) bestpos = null
+        if (bestpos > adjfnpos.length) bestpos = null
 
         console.log('mobilefn:', bestpos)
         if (bestpos) {
@@ -84,6 +84,9 @@ $(window).on("scroll", function() {
             $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
         } else {
             $('.mobile-fn-float').css('opacity', '0')
+            setTimeout(function() {
+                $('.mobile-fn-float')[0].scrollTop = 0;
+            }, 300)
         }
     }
 })

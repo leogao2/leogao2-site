@@ -217,58 +217,70 @@ body {
 }
 .article-entry h1,
 .floating-footnote h1,
+.mobile-fn-float h1,
 .widget h1 {
   font-size: 2em;
 }
 .article-entry h2,
 .floating-footnote h2,
+.mobile-fn-float h2,
 .widget h2 {
   font-size: 1.5em;
 }
 .article-entry h3,
 .floating-footnote h3,
+.mobile-fn-float h3,
 .widget h3 {
   font-size: 1.3em;
 }
 .article-entry h4,
 .floating-footnote h4,
+.mobile-fn-float h4,
 .widget h4 {
   font-size: 1.2em;
 }
 .article-entry h5,
 .floating-footnote h5,
+.mobile-fn-float h5,
 .widget h5 {
   font-size: 1em;
 }
 .article-entry h6,
 .floating-footnote h6,
+.mobile-fn-float h6,
 .widget h6 {
   font-size: 1em;
   color: #999;
 }
 .article-entry hr,
 .floating-footnote hr,
+.mobile-fn-float hr,
 .widget hr {
   border: 1px dashed #ddd;
 }
 .article-entry strong,
 .floating-footnote strong,
+.mobile-fn-float strong,
 .widget strong {
   font-weight: bold;
 }
 .article-entry em,
 .floating-footnote em,
+.mobile-fn-float em,
 .widget em,
 .article-entry cite,
 .floating-footnote cite,
+.mobile-fn-float cite,
 .widget cite {
   font-style: italic;
 }
 .article-entry sup,
 .floating-footnote sup,
+.mobile-fn-float sup,
 .widget sup,
 .article-entry sub,
 .floating-footnote sub,
+.mobile-fn-float sub,
 .widget sub {
   font-size: 0.75em;
   line-height: 0;
@@ -277,66 +289,81 @@ body {
 }
 .article-entry sup,
 .floating-footnote sup,
+.mobile-fn-float sup,
 .widget sup {
   top: -0.5em;
 }
 .article-entry sub,
 .floating-footnote sub,
+.mobile-fn-float sub,
 .widget sub {
   bottom: -0.2em;
 }
 .article-entry small,
 .floating-footnote small,
+.mobile-fn-float small,
 .widget small {
   font-size: 0.85em;
 }
 .article-entry acronym,
 .floating-footnote acronym,
+.mobile-fn-float acronym,
 .widget acronym,
 .article-entry abbr,
 .floating-footnote abbr,
+.mobile-fn-float abbr,
 .widget abbr {
   border-bottom: 1px dotted;
 }
 .article-entry ul,
 .floating-footnote ul,
+.mobile-fn-float ul,
 .widget ul,
 .article-entry ol,
 .floating-footnote ol,
+.mobile-fn-float ol,
 .widget ol,
 .article-entry dl,
 .floating-footnote dl,
+.mobile-fn-float dl,
 .widget dl {
   margin: 20px 0px 20px 40px;
   line-height: 1.5em;
 }
 .article-entry ul ul,
 .floating-footnote ul ul,
+.mobile-fn-float ul ul,
 .widget ul ul,
 .article-entry ol ul,
 .floating-footnote ol ul,
+.mobile-fn-float ol ul,
 .widget ol ul,
 .article-entry ul ol,
 .floating-footnote ul ol,
+.mobile-fn-float ul ol,
 .widget ul ol,
 .article-entry ol ol,
 .floating-footnote ol ol,
+.mobile-fn-float ol ol,
 .widget ol ol {
   margin-top: 0;
   margin-bottom: 0;
 }
 .article-entry ul,
 .floating-footnote ul,
+.mobile-fn-float ul,
 .widget ul {
   list-style: disc;
 }
 .article-entry ol,
 .floating-footnote ol,
+.mobile-fn-float ol,
 .widget ol {
   list-style: decimal;
 }
 .article-entry dt,
 .floating-footnote dt,
+.mobile-fn-float dt,
 .widget dt {
   font-weight: bold;
 }
@@ -616,143 +643,179 @@ a.main-title:hover {
   font-variant: small-caps;
 }
 .article-entry,
-.floating-footnote {
+.floating-footnote,
+.mobile-fn-float {
   color: #555;
   padding: 0 20px;
   text-align: justify;
 }
 .article-entry:before,
 .floating-footnote:before,
+.mobile-fn-float:before,
 .article-entry:after,
-.floating-footnote:after {
+.floating-footnote:after,
+.mobile-fn-float:after {
   content: "";
   display: table;
 }
 .article-entry:after,
-.floating-footnote:after {
+.floating-footnote:after,
+.mobile-fn-float:after {
   clear: both;
 }
 .article-entry p,
 .floating-footnote p,
+.mobile-fn-float p,
 .article-entry table,
-.floating-footnote table {
+.floating-footnote table,
+.mobile-fn-float table {
   line-height: 1.5em;
   margin: 1.5em 0;
 }
 .article-entry h1,
 .floating-footnote h1,
+.mobile-fn-float h1,
 .article-entry h2,
 .floating-footnote h2,
+.mobile-fn-float h2,
 .article-entry h3,
 .floating-footnote h3,
+.mobile-fn-float h3,
 .article-entry h4,
 .floating-footnote h4,
+.mobile-fn-float h4,
 .article-entry h5,
 .floating-footnote h5,
+.mobile-fn-float h5,
 .article-entry h6,
-.floating-footnote h6 {
+.floating-footnote h6,
+.mobile-fn-float h6 {
   font-weight: bold;
 }
 .article-entry h1,
 .floating-footnote h1,
+.mobile-fn-float h1,
 .article-entry h2,
 .floating-footnote h2,
+.mobile-fn-float h2,
 .article-entry h3,
 .floating-footnote h3,
+.mobile-fn-float h3,
 .article-entry h4,
 .floating-footnote h4,
+.mobile-fn-float h4,
 .article-entry h5,
 .floating-footnote h5,
+.mobile-fn-float h5,
 .article-entry h6,
-.floating-footnote h6 {
+.floating-footnote h6,
+.mobile-fn-float h6 {
   line-height: 1.1em;
   margin: 1.1em 0;
   text-align: left;
 }
 .article-entry a,
-.floating-footnote a {
+.floating-footnote a,
+.mobile-fn-float a {
   color: inherit;
   text-decoration: underline;
 }
 .article-entry a:hover,
-.floating-footnote a:hover {
+.floating-footnote a:hover,
+.mobile-fn-float a:hover {
   color: #777;
 }
 .article-entry ul,
 .floating-footnote ul,
+.mobile-fn-float ul,
 .article-entry ol,
 .floating-footnote ol,
+.mobile-fn-float ol,
 .article-entry dl,
-.floating-footnote dl {
+.floating-footnote dl,
+.mobile-fn-float dl {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
 .article-entry img,
 .floating-footnote img,
+.mobile-fn-float img,
 .article-entry video,
-.floating-footnote video {
+.floating-footnote video,
+.mobile-fn-float video {
   max-width: 100%;
   height: auto;
   display: block;
   margin: auto;
 }
 .article-entry iframe,
-.floating-footnote iframe {
+.floating-footnote iframe,
+.mobile-fn-float iframe {
   border: none;
 }
 .article-entry table,
-.floating-footnote table {
+.floating-footnote table,
+.mobile-fn-float table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
 }
 .article-entry th,
-.floating-footnote th {
+.floating-footnote th,
+.mobile-fn-float th {
   font-weight: bold;
   border-bottom: 3px solid #ddd;
   padding-bottom: 0.5em;
 }
 .article-entry td,
-.floating-footnote td {
+.floating-footnote td,
+.mobile-fn-float td {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
 }
 .article-entry blockquote,
-.floating-footnote blockquote {
+.floating-footnote blockquote,
+.mobile-fn-float blockquote {
   font-family: 'Source Serif Pro', Georgia, "Times New Roman", serif;
   font-size: 1.4em;
   margin: 1.5em 20px;
   text-align: center;
 }
 .article-entry blockquote footer,
-.floating-footnote blockquote footer {
+.floating-footnote blockquote footer,
+.mobile-fn-float blockquote footer {
   font-size: 16px;
   margin: 1.5em 0;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .article-entry blockquote footer cite:before,
-.floating-footnote blockquote footer cite:before {
+.floating-footnote blockquote footer cite:before,
+.mobile-fn-float blockquote footer cite:before {
   content: "—";
   padding: 0 0.5em;
 }
 .article-entry .pullquote,
-.floating-footnote .pullquote {
+.floating-footnote .pullquote,
+.mobile-fn-float .pullquote {
   text-align: left;
   width: 45%;
   margin: 0;
 }
 .article-entry .pullquote.left,
-.floating-footnote .pullquote.left {
+.floating-footnote .pullquote.left,
+.mobile-fn-float .pullquote.left {
   margin-left: 0.5em;
   margin-right: 1em;
 }
 .article-entry .pullquote.right,
-.floating-footnote .pullquote.right {
+.floating-footnote .pullquote.right,
+.mobile-fn-float .pullquote.right {
   margin-right: 0.5em;
   margin-left: 1em;
 }
 .article-entry .caption,
-.floating-footnote .caption {
+.floating-footnote .caption,
+.mobile-fn-float .caption {
   color: #999;
   display: block;
   font-size: 0.9em;
@@ -761,7 +824,8 @@ a.main-title:hover {
   text-align: center;
 }
 .article-entry .video-container,
-.floating-footnote .video-container {
+.floating-footnote .video-container,
+.mobile-fn-float .video-container {
   position: relative;
   padding-top: 56.25%;
   height: 0;
@@ -769,10 +833,13 @@ a.main-title:hover {
 }
 .article-entry .video-container iframe,
 .floating-footnote .video-container iframe,
+.mobile-fn-float .video-container iframe,
 .article-entry .video-container object,
 .floating-footnote .video-container object,
+.mobile-fn-float .video-container object,
 .article-entry .video-container embed,
-.floating-footnote .video-container embed {
+.floating-footnote .video-container embed,
+.mobile-fn-float .video-container embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -1109,7 +1176,7 @@ a.main-title:hover {
   border-radius: 3px;
   color: #555;
   padding: 10px;
-  width: calc(100% - 40px);
+  width: calc(100% - 20px - 20px);
   display: block;
   overflow: auto;
   opacity: 0;
