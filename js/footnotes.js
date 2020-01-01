@@ -85,6 +85,7 @@ $(window).on("scroll", function() {
 
         console.log('mobilefn:', bestpos)
         if (bestpos) {
+            if (wasbestpos) return
             wasbestpos = true;
             // overflow ellipsis
             if (isOverflown($('.mobile-fn-float')[0])) {
