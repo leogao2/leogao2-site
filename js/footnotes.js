@@ -46,6 +46,12 @@ $(window).on("load resize", function() {
 
 let referenceh = $(window).height() * 0.2;
 
+// from https://stackoverflow.com/questions/9333379/check-if-an-elements-content-is-overflowing/34299947
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+var wasbestpos = false;
 
 $(window).on("scroll", function() {
     if (window.innerWidth < 1295) {
@@ -79,14 +85,34 @@ $(window).on("scroll", function() {
 
         console.log('mobilefn:', bestpos)
         if (bestpos) {
+            wasbestpos = true;
+            // overflow ellipsis
+            if (isOverflown($('.mobile-fn-float')[0])) {
+                $('.footnote-float-overflow').css('display', 'inline')
+            } else {
+                console.log('not overflow')
+                $('.footnote-float-overflow').css('display', 'none')
+            }
+
             $('.mobile-fn-float').css('opacity', '1')
             $('.footnote-float-numeral').html(bestpos)
             $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
         } else {
+            if (!wasbestpos) return
+            wasbestpos = false;
             $('.mobile-fn-float').css('opacity', '0')
+            $('.footnote-float-overflow').css('display', 'none')
             setTimeout(function() {
                 $('.mobile-fn-float')[0].scrollTop = 0;
+                $('.mobile-fn-float').css('overflow', 'hidden')
+                console.log('not overflow 2')
+
             }, 300)
         }
     }
+})
+
+$('.footnote-float-overflow').click('click', function() {
+    $('.footnote-float-overflow').css('display', 'none')
+    $('.mobile-fn-float').css('overflow', 'scroll')
 })
