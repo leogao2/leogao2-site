@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2019-12-31T15:23:35.943Z</updated>
+  <updated>2020-01-01T04:05:25.091Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2019-12-31T15:23:35.943Z</updated>
+    <updated>2020-01-01T04:05:25.091Z</updated>
     
     <summary type="html">
     
@@ -37,9 +37,9 @@
     
     
     
-      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
-    
       <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
+    
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
@@ -98,11 +98,11 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
+      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT2" scheme="https://leogao.dev/tags/GPT2/"/>
-    
-      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
       <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
     

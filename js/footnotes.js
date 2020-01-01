@@ -1,4 +1,6 @@
 
+let adjfnpos = [0]
+
 $(window).on("load", function() {
     console.log('footnotes start')
     var leftax = $('.leftfnbegin').offset().top
@@ -8,6 +10,9 @@ $(window).on("load", function() {
         let i = ind + 1
         console.log(i)
         let offs = $(`#fnref${i}`).offset()
+        // so that if 2 fns are too close theyll get separated
+        let adjustedoffs = Math.max(offs.top, adjfnpos[adjfnpos.length - 1] + 50)
+        adjfnpos.push(adjustedoffs)
         let toppos = offs.top - 70
         console.log(toppos)
         //$(`#footnote-${i}`).css('top', `${toppos}px`)
@@ -35,3 +40,50 @@ $(window).on("load resize", function() {
         $(".floating-footnote").css('display', 'inline')
     }
 });
+
+
+// mobile time!
+
+let referenceh = $(window).height() * 0.2;
+
+
+$(window).on("scroll", function() {
+    if (window.innerWidth < 1295) {
+        let bestdist = Infinity;
+        var bestpos;
+
+        let topthresh = $(window).scrollTop() + referenceh;
+        let bottomthresh = $(window).scrollTop() + $(window).height() * 0.6;
+
+        // naive O(n) algo; once i start having articles with thousands of footnotes I'll rewrite it
+        for (let i = 1; i <= adjfnpos.length; i++) {
+            //console.log($(window).scrollTop())
+            let dist = Math.abs(($(window).scrollTop() + referenceh) - adjfnpos[i])
+            //console.log(adjfnpos)
+            if (bestdist < dist) {
+                // done
+                if (adjfnpos[bestpos] < $(window).scrollTop() || adjfnpos[bestpos] > bottomthresh) {
+                    if (adjfnpos[i] < $(window).scrollTop() || adjfnpos[i] > bottomthresh) {
+                        bestpos = null
+                    } else {
+                        bestpos = i
+                    }
+                }
+                break
+            }
+            bestdist = Math.min(bestdist, dist)
+            bestpos = i
+        }
+
+        if (bestpos >= adjfnpos.length) bestpos = null
+
+        console.log('mobilefn:', bestpos)
+        if (bestpos) {
+            $('.mobile-fn-float').css('opacity', '1')
+            $('.footnote-float-numeral').html(bestpos)
+            $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
+        } else {
+            $('.mobile-fn-float').css('opacity', '0')
+        }
+    }
+})
