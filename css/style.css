@@ -1088,6 +1088,57 @@ a.main-title:hover {
   text-align: center;
   margin-bottom: 10px;
 }
+.mobile-fn-float-wrapper {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 25%;
+  width: calc(100% - 20px);
+  padding: 10px;
+}
+.mobile-fn-float {
+  position: absolute;
+  bottom: 10px;
+  max-width: 120ch;
+  max-height: 100%;
+  background: #fff;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #555;
+  padding: 10px;
+  width: calc(100% - 40px);
+  display: block;
+  overflow: auto;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.mobile-fn-float a {
+  color: inherit;
+  text-decoration: underline;
+}
+.mobile-fn-float a:hover {
+  color: #777;
+}
+.mobile-fn-float p {
+  margin: 0.5em 0;
+}
+.mobile-fn-float em {
+  font-style: italic;
+}
+@media screen and (min-width: 1295px) {
+  .mobile-fn-float {
+    display: none;
+  }
+}
+.mobile-fn-float img {
+  max-width: calc(100% - 10px);
+}
 #comments {
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
