@@ -8,7 +8,7 @@ $(window).on("load", function() {
     var leftmore = 0;
     $('.footnotes-list').children().each(function(ind, ob) {
         let i = ind + 1
-        console.log(i)
+        //console.log(i)
         let offs = $(`#fnref${i}`).offset()
         // so that if 2 fns are too close theyll get separated
         let adjustedoffs = Math.max(offs.top, adjfnpos[adjfnpos.length - 1] + 50)
@@ -36,8 +36,10 @@ $(window).on("load resize", function() {
     //console.log('resize', window.innerWidth)
     if (window.innerWidth < 1295) {
         $(".floating-footnote").css('display', 'none')
+        $('.mobile-fn-float-wrapper').css('display', 'inline')
     } else {
         $(".floating-footnote").css('display', 'inline')
+        $('.mobile-fn-float-wrapper').css('display', 'none')
     }
 });
 
@@ -51,7 +53,7 @@ function isOverflown(element) {
     return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }
 
-var wasbestpos = false;
+var wasbestpos = null;
 
 $(window).on("scroll", function() {
     if (window.innerWidth < 1295) {
@@ -85,28 +87,31 @@ $(window).on("scroll", function() {
 
         //console.log('mobilefn:', bestpos)
         if (bestpos) {
-            if (wasbestpos) return
+            if (wasbestpos === true) return
             wasbestpos = true;
             // overflow ellipsis
+
+            $('.mobile-fn-float').css('opacity', '1')
+            $('.footnote-float-numeral').html(bestpos)
+            $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
+
+            $(".mobile-fn-float-wrapper").css('display', 'inline')
             if (isOverflown($('.mobile-fn-float')[0])) {
                 $('.footnote-float-overflow').css('display', 'inline')
             } else {
                 console.log('not overflow')
                 $('.footnote-float-overflow').css('display', 'none')
             }
-
-            $('.mobile-fn-float').css('opacity', '1')
-            $('.footnote-float-numeral').html(bestpos)
-            $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
         } else {
-            if (!wasbestpos) return
+            if (wasbestpos === false) return
             wasbestpos = false;
             $('.mobile-fn-float').css('opacity', '0')
             $('.footnote-float-overflow').css('display', 'none')
             setTimeout(function() {
                 $('.mobile-fn-float')[0].scrollTop = 0;
                 $('.mobile-fn-float').css('overflow', 'hidden')
-                console.log('not overflow 2')
+                //console.log('not overflow 2')
+                $('.mobile-fn-float-wrapper').css('display', 'none')
 
             }, 300)
         }
