@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-01-02T20:25:35.070Z</updated>
+  <updated>2020-01-02T22:06:47.038Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2020-01-02T20:25:35.070Z</updated>
+    <updated>2020-01-02T22:06:47.038Z</updated>
     
     <summary type="html">
     
@@ -40,9 +40,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
-    
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
+      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
     
   </entry>
   
