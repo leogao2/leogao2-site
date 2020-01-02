@@ -2,7 +2,7 @@
 let adjfnpos = [0]
 
 $(window).on("load", function() {
-    console.log('footnotes start')
+    //console.log('footnotes start')
     var leftax = $('.leftfnbegin').offset().top
     var rightax = $('.rightfnbegin').offset().top
     var leftmore = 0;
@@ -14,7 +14,7 @@ $(window).on("load", function() {
         let adjustedoffs = Math.max(offs.top, adjfnpos[adjfnpos.length - 1] + 50)
         adjfnpos.push(adjustedoffs)
         let toppos = offs.top - 70
-        console.log(toppos)
+        //console.log(toppos)
         //$(`#footnote-${i}`).css('top', `${toppos}px`)
 
         if ((toppos < 900 || offs.left < window.innerWidth / 2 || (rightax - toppos > 200) || leftmore < -2) && !(leftax - toppos > 200)) {
@@ -33,7 +33,7 @@ $(window).on("load", function() {
 })
 
 $(window).on("load resize", function() {
-    console.log('resize', window.innerWidth)
+    //console.log('resize', window.innerWidth)
     if (window.innerWidth < 1295) {
         $(".floating-footnote").css('display', 'none')
     } else {
@@ -83,7 +83,7 @@ $(window).on("scroll", function() {
 
         if (bestpos > adjfnpos.length || adjfnpos[bestpos] < $(window).scrollTop()) bestpos = null
 
-        console.log('mobilefn:', bestpos)
+        //console.log('mobilefn:', bestpos)
         if (bestpos) {
             if (wasbestpos) return
             wasbestpos = true;
