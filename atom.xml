@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-01-02T22:06:47.038Z</updated>
+  <updated>2020-01-04T20:37:13.782Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2020-01-02T22:06:47.038Z</updated>
+    <updated>2020-01-04T20:37:13.782Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,10 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;/images/contour_really_small.png&quot; alt&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;smallcaps&quot;&gt;As the 2010’s draw to a close&lt;/span&gt;, it’s worth taking
+          &lt;div class=&quot;main-image&quot; markdown=&quot;1&quot;&gt;
+&lt;img src=&quot;/images/contour_really_small.png&quot;&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;smallcaps&quot;&gt;As the 2010’s draw to
         
       
     
@@ -40,9 +42,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
-    
       <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
+    
+      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
   </entry>
   
@@ -51,7 +53,7 @@
     <link href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/"/>
     <id>https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/</id>
     <published>2019-11-09T07:00:00.000Z</published>
-    <updated>2019-11-09T22:24:11.393Z</updated>
+    <updated>2020-01-03T05:35:25.797Z</updated>
     
     <summary type="html">
     
@@ -80,7 +82,7 @@
     <link href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/"/>
     <id>https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/</id>
     <published>2019-10-27T06:00:00.000Z</published>
-    <updated>2019-12-31T04:48:47.270Z</updated>
+    <updated>2020-01-03T05:35:17.213Z</updated>
     
     <summary type="html">
     
@@ -114,7 +116,7 @@
     <link href="https://leogao.dev/2019/09/20/Hello-World/"/>
     <id>https://leogao.dev/2019/09/20/Hello-World/</id>
     <published>2019-09-20T06:00:00.000Z</published>
-    <updated>2019-10-27T23:48:54.205Z</updated>
+    <updated>2020-01-03T05:35:21.241Z</updated>
     
     <summary type="html">
     

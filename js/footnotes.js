@@ -91,17 +91,19 @@ $(window).on("scroll", function() {
             wasbestpos = true;
             // overflow ellipsis
 
-            $('.mobile-fn-float').css('opacity', '1')
-            $('.footnote-float-numeral').html(bestpos)
-            $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
-
             $(".mobile-fn-float-wrapper").css('display', 'inline')
-            if (isOverflown($('.mobile-fn-float')[0])) {
-                $('.footnote-float-overflow').css('display', 'inline')
-            } else {
-                console.log('not overflow')
-                $('.footnote-float-overflow').css('display', 'none')
-            }
+            setTimeout(function() {
+                $('.mobile-fn-float').css('opacity', '1')
+                $('.footnote-float-numeral').html(bestpos)
+                $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
+
+                if (isOverflown($('.mobile-fn-float')[0])) {
+                    $('.footnote-float-overflow').css('display', 'inline')
+                } else {
+                    console.log('not overflow')
+                    $('.footnote-float-overflow').css('display', 'none')
+                }
+            }, 100)
         } else {
             if (wasbestpos === false) return
             wasbestpos = false;

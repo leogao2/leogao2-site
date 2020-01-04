@@ -361,6 +361,12 @@ body {
 .widget ol {
   list-style: decimal;
 }
+.article-entry .toc,
+.floating-footnote .toc,
+.mobile-fn-float .toc,
+.widget .toc {
+  list-style: none;
+}
 .article-entry dt,
 .floating-footnote dt,
 .mobile-fn-float dt,
@@ -587,7 +593,7 @@ body {
 .article-date {
   float: left;
   letter-spacing: 1px;
-  font-variant-numeric: oldstyle-nums;
+  font-variant-numeric: proportional-nums lining-nums;
 }
 .article-category {
   float: left;
@@ -647,6 +653,7 @@ a.main-title:hover {
 .mobile-fn-float {
   color: #555;
   padding: 0 20px;
+  font-variant-numeric: oldstyle-nums proportional-nums;
   text-align: justify;
 }
 .article-entry:before,
@@ -710,6 +717,7 @@ a.main-title:hover {
 .article-entry h6,
 .floating-footnote h6,
 .mobile-fn-float h6 {
+  font-variant-numeric: lining-nums;
   line-height: 1.1em;
   margin: 1.1em 0;
   text-align: left;
@@ -1181,10 +1189,10 @@ a.main-title:hover {
   display: block;
   overflow: hidden;
   opacity: 0;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -ms-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 .mobile-fn-float a {
   color: inherit;
@@ -1221,6 +1229,10 @@ a.main-title:hover {
 }
 .footnote-float-overflow:hover {
   background: #ddd;
+}
+.toc-outer {
+  max-width: 200px;
+  float: left;
 }
 #comments {
   background: #fff;
