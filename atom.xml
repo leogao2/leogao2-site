@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-01-04T20:37:13.782Z</updated>
+  <updated>2020-02-01T06:04:57.537Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Multidisk Filesystems: A Comparison</title>
+    <link href="https://leogao.dev/2020/01/31/Multidisk-Filesystems-A-Comparison/"/>
+    <id>https://leogao.dev/2020/01/31/Multidisk-Filesystems-A-Comparison/</id>
+    <published>2020-01-31T07:00:00.000Z</published>
+    <updated>2020-02-01T06:04:57.537Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;With the death of &lt;a href=&quot;https://www.scientificamerican.com/article/kryders-law/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Kryder’s law&lt;/a&gt;&lt;sup
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="https://leogao.dev/tags/Linux/"/>
+    
+      <category term="Filesystems" scheme="https://leogao.dev/tags/Filesystems/"/>
+    
+  </entry>
   
   <entry>
     <title>The Decade of Deep Learning</title>
@@ -42,9 +69,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
-    
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
+      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
     
   </entry>
   

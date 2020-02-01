@@ -768,18 +768,54 @@ a.main-title:hover {
   border-collapse: collapse;
   border-spacing: 0;
 }
-.article-entry th,
-.floating-footnote th,
-.mobile-fn-float th {
+.article-entry thead th,
+.floating-footnote thead th,
+.mobile-fn-float thead th {
   font-weight: bold;
   border-bottom: 3px solid #ddd;
   padding-bottom: 0.5em;
+}
+.article-entry thead.slantheaders th,
+.floating-footnote thead.slantheaders th,
+.mobile-fn-float thead.slantheaders th {
+  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+  padding-bottom: 1.5em;
+  padding-left: 0.5em;
+}
+.article-entry .sideheader,
+.floating-footnote .sideheader,
+.mobile-fn-float .sideheader {
+  font-weight: bold;
+  border-right: 3px solid #ddd;
+}
+.article-entry .equalwidth,
+.floating-footnote .equalwidth,
+.mobile-fn-float .equalwidth {
+  table-layout: fixed;
 }
 .article-entry td,
 .floating-footnote td,
 .mobile-fn-float td {
   border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+  padding: 10px 5px;
+}
+.article-entry .red,
+.floating-footnote .red,
+.mobile-fn-float .red {
+  background-color: #e9736e;
+}
+.article-entry .green,
+.floating-footnote .green,
+.mobile-fn-float .green {
+  background-color: #6fb95f;
+}
+.article-entry .yellow,
+.floating-footnote .yellow,
+.mobile-fn-float .yellow {
+  background-color: #efefbb;
 }
 .article-entry blockquote,
 .floating-footnote blockquote,
