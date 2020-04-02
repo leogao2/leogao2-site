@@ -12,6 +12,13 @@ function setup_footnotes() {
         let i = ind + 1
         //console.log(i)
         let offs = $(`#fnref${i}`).offset()
+        $(`#fnref${i}`).hover(function() {
+            console.log(i, 'hover on')
+            $(`#footnote-${i}`).css("box-shadow", "2px 4px 6px #ccc")
+        }, function() {
+            console.log(i, 'hover off')
+            $(`#footnote-${i}`).css("box-shadow", "1px 2px 3px #ddd")
+        })
         // so that if 2 fns are too close theyll get separated
         let adjustedoffs = Math.max(offs.top, adjfnpos[adjfnpos.length - 1] + 50)
         adjfnpos.push(adjustedoffs)
@@ -31,6 +38,17 @@ function setup_footnotes() {
             rightax = toppos + $(`#footnote-${i}`).outerHeight() + 30
             leftmore--
         }
+
+        $(`#footnote-${i}`).hover(function() {
+            console.log(i, 'hover on')
+            $(`#fnref${i}`).css("box-shadow", "1px 2px 3px #ccc")
+            $(`#fnref${i}`).css("border", "1px solid #ccc")
+        }, function() {
+            console.log(i, 'hover off')
+            $(`#fnref${i}`).css("box-shadow", "none")
+            $(`#fnref${i}`).css("border", "none")
+
+        })
     })
     
 }
