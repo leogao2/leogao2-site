@@ -18,8 +18,8 @@
   
   <entry>
     <title>Breaking Down Reddit&#39;s Imposter</title>
-    <link href="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Impostor/"/>
-    <id>https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Impostor/</id>
+    <link href="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/"/>
+    <id>https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/</id>
     <published>2020-04-01T06:00:00.000Z</published>
     <updated>2020-04-02T04:37:15.205Z</updated>
     
@@ -104,9 +104,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
-    
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
+      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
     
   </entry>
   
