@@ -44,7 +44,7 @@ ga('send', 'pageview');
   <title>The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview | Leo Gao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Interest in text-generating models has been rekindled in the past year—in large part due to GPT2, which primarily demonstrates the effectiveness of using the Transformer architecture with bigger mode">
-<meta name="keywords" content="Machine Learning,Language Models,GPT2,Reinforcement Learning,Natural Language Processing">
+<meta name="keywords" content="Machine Learning,Natural Language Processing,Language Models,GPT2,Reinforcement Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview">
 <meta property="og:url" content="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/index.html">
@@ -52,7 +52,7 @@ ga('send', 'pageview');
 <meta property="og:description" content="Interest in text-generating models has been rekindled in the past year—in large part due to GPT2, which primarily demonstrates the effectiveness of using the Transformer architecture with bigger mode">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://leogao.dev/images/geb_thumbnail_small.jpg">
-<meta property="og:updated_time" content="2020-02-16T17:15:50.766Z">
+<meta property="og:updated_time" content="2020-04-02T03:34:01.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview">
 <meta name="twitter:description" content="Interest in text-generating models has been rekindled in the past year—in large part due to GPT2, which primarily demonstrates the effectiveness of using the Transformer architecture with bigger mode">
@@ -126,7 +126,7 @@ ga('send', 'pageview');
   <div class="article-meta">
     <div class="article-date">
   Created: <time datetime="2019-10-27T06:00:00.000Z" itemprop="datePublished">2019-10-27</time>&emsp;
-  Modified: <time datetime="2019-12-21T07:00:00.000Z" itemprop="datePublished">2019-12-21</time>
+  Modified: <time datetime="2020-02-16T07:00:00.000Z" itemprop="datePublished">2020-02-16</time>
 </div>
     
   </div>
@@ -177,11 +177,9 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><blockquote>
-<p>While working on each sentence, he has no idea what the next sentence is going to be, much less the next chapter or the end of the book.</p>
-<p><cite><a href="https://web.archive.org/web/20120730190435/http://www.dareland.com/emulsionalproblems/robbins.htm" target="_blank" rel="noopener">Michael Dare on Tom Robbins’s writing style</a></cite></p>
-</blockquote>
- <a href="#fnref1" class="footnote-backref">↩︎</a></li>
+<li id="fn1" class="footnote-item"><p>&quot;While working on each sentence, he has no idea what the next sentence is going to be, much less the next chapter or the end of the book. &quot;
+<cite><a href="https://web.archive.org/web/20120730190435/http://www.dareland.com/emulsionalproblems/robbins.htm" target="_blank" rel="noopener">Michael Dare on Tom Robbins’s writing style</a></cite> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
 <li id="fn2" class="footnote-item"><p>An unmodified sample from 117M, generated with a beam-width of 8, top-k of 2, repetition penalty, and conditioned on the unicorn prompt <a href="https://gist.github.com/leogao2/eefe1c1ed512559c20c84f9d797b68e1" target="_blank" rel="noopener">is available here</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn3" class="footnote-item"><p>The authors also add an additional “sequence-level” objective that generates sequences from the model and uses repeating ngrams from those sequences to populate <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><msup><mi mathvariant="script">C</mi><mi>t</mi></msup></mrow></mrow><annotation encoding="application/x-tex">\mathcal{C^t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.7935559999999999em;"></span><span class="strut bottom" style="height:0.7935559999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord"><span class="mord mathcal" style="margin-right:0.05834em;">C</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">t</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>. While this does help a bit with exposure bias, the training objective still aims to reduce repetition explicitly. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
@@ -192,7 +190,7 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" data-id="ck6pagsw100040imlu6qdgtk8" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" data-id="ck8i8zz0f0008trml33jnsusf" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -235,6 +233,7 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
         
           <aside class="sidebar sidebar-left">
     <div class="leftfnbegin"></div>
+    <div class="sidebar-left-footnotes"></div>
 </aside>
 <aside class="sidebar sidebar-right">
     
@@ -266,6 +265,10 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
       <ul>
         
           <li>
+            <a href="/2020/04/01/Breaking-Down-Reddit-s-Impostor/">Breaking Down Reddit&#39;s Impostor</a>
+          </li>
+        
+          <li>
             <a href="/2020/01/31/Multidisk-Filesystems-A-Comparison/">Multidisk Filesystems: A Comparison</a>
           </li>
         
@@ -281,21 +284,19 @@ p^*(x) \approx \prod_{i=1}^{n} \hat{p}_\theta(x_i | x_{&lt;i})
             <a href="/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/">The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview</a>
           </li>
         
-          <li>
-            <a href="/2019/09/20/Hello-World/">Hello, World!</a>
-          </li>
-        
       </ul>
     </div>
   </div>
 
     
     <div class="rightfnbegin"></div>
+    <div class="sidebar-right-footnotes"></div>
+
 </aside>
 
 <div class="mobile-fn-float-wrapper">
     <div class="mobile-fn-float">
-        <div class="footnote-float-numeral"></div>
+        <div class="footnote-float-numeral footnote-float-numeral-mobile"></div>
         <div class="footnote-float-content"></div>
         <div class="footnote-float-overflow">...</div>
     </div>

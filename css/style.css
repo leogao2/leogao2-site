@@ -640,7 +640,7 @@ a.main-title:hover {
 }
 .main-info {
   margin-top: 10px;
-  padding: 10px;
+  padding: 20px;
   line-height: 1.5em;
   font-size: 16px;
 }
@@ -821,9 +821,10 @@ a.main-title:hover {
 .floating-footnote blockquote,
 .mobile-fn-float blockquote {
   font-family: 'Source Serif Pro', Georgia, "Times New Roman", serif;
-  font-size: 1.4em;
+  font-size: 1.3em;
   margin: 1.5em 20px;
   text-align: center;
+  white-space: pre;
 }
 .article-entry blockquote footer,
 .floating-footnote blockquote footer,
@@ -1752,4 +1753,16 @@ pre .javascript .function {
 .tagcloud a {
   margin-right: 5px;
   display: inline-block;
+}
+.contact {
+  color: #222;
+  padding: 10px;
+  font-size: 1.1em;
+}
+.contact .fa {
+  min-width: 25px;
+}
+.contact a {
+  color: inherit;
+  text-decoration: none;
 }

@@ -1,11 +1,13 @@
 
 let adjfnpos = [0]
 
-$(window).on("load", function() {
+function setup_footnotes() {
     //console.log('footnotes start')
     var leftax = $('.leftfnbegin').offset().top
     var rightax = $('.rightfnbegin').offset().top
     var leftmore = 0;
+    $('.sidebar-left-footnotes').html('')
+    $('.sidebar-right-footnotes').html('')
     $('.footnotes-list').children().each(function(ind, ob) {
         let i = ind + 1
         //console.log(i)
@@ -17,20 +19,25 @@ $(window).on("load", function() {
         //console.log(toppos)
         //$(`#footnote-${i}`).css('top', `${toppos}px`)
 
-        if ((toppos < 900 || offs.left < window.innerWidth / 2 || (rightax - toppos > 200) || leftmore < -2) && !(leftax - toppos > 200)) {
+        if ((toppos < 900 || offs.left < window.innerWidth / 2 || (rightax - toppos > 200) || leftmore < -2) && !(leftax - toppos > 200) && (leftmore <= 2)) {
+            //console.log(toppos, rightax)
             let newhtml = `<div class="floating-footnote" id="footnote-${i}" style="top: ${Math.max(leftax, toppos)}px"><span class="footnote-float-numeral">${i}</span> ${ob.innerHTML}</div>`
-            $('.sidebar-left').append(newhtml)
+            $('.sidebar-left-footnotes').append(newhtml)
             leftax = toppos + $(`#footnote-${i}`).outerHeight() + 30
             leftmore++
         } else {
             let newhtml = `<div class="floating-footnote" id="footnote-${i}" style="top: ${Math.max(rightax, toppos)}px"><span class="footnote-float-numeral">${i}</span> ${ob.innerHTML}</div>`
-            $('.sidebar-right').append(newhtml)
+            $('.sidebar-right-footnotes').append(newhtml)
             rightax = toppos + $(`#footnote-${i}`).outerHeight() + 30
             leftmore--
         }
     })
     
-})
+}
+
+$(window).on("load", setup_footnotes)
+
+var ft_setup_scheduled = false
 
 $(window).on("load resize", function() {
     //console.log('resize', window.innerWidth)
@@ -40,6 +47,14 @@ $(window).on("load resize", function() {
     } else {
         $(".floating-footnote").css('display', 'inline')
         $('.mobile-fn-float-wrapper').css('display', 'none')
+        if (!ft_setup_scheduled) {
+            // ugly bodge but it works
+            setTimeout(function() {
+                setup_footnotes();
+                ft_setup_scheduled = false
+            }, 200)
+        }
+        ft_setup_scheduled = true
     }
 });
 
@@ -58,16 +73,16 @@ var wasbestpos = null;
 $(window).on("scroll", function() {
     if (window.innerWidth < 1295) {
         let bestdist = Infinity;
-        var bestpos;
+        var bestpos = null;
 
         let topthresh = $(window).scrollTop() + referenceh;
         let bottomthresh = $(window).scrollTop() + $(window).height() * 0.6;
+        console.log(adjfnpos)
 
         // naive O(n) algo; once i start having articles with thousands of footnotes I'll rewrite it
-        for (let i = 1; i <= adjfnpos.length; i++) {
+        for (let i = 1; i < adjfnpos.length; i++) {
             //console.log($(window).scrollTop())
             let dist = Math.abs(($(window).scrollTop() + referenceh) - adjfnpos[i])
-            //console.log(adjfnpos)
             if (bestdist < dist) {
                 // done
                 if (adjfnpos[bestpos] < $(window).scrollTop() || adjfnpos[bestpos] > bottomthresh) {
@@ -85,16 +100,16 @@ $(window).on("scroll", function() {
 
         if (bestpos > adjfnpos.length || adjfnpos[bestpos] < $(window).scrollTop()) bestpos = null
 
-        //console.log('mobilefn:', bestpos)
+        console.log('mobilefn:', bestpos)
         if (bestpos) {
-            if (wasbestpos === true) return
-            wasbestpos = true;
+            if (wasbestpos === bestpos) return
+            wasbestpos = bestpos;
             // overflow ellipsis
 
             $(".mobile-fn-float-wrapper").css('display', 'inline')
             setTimeout(function() {
                 $('.mobile-fn-float').css('opacity', '1')
-                $('.footnote-float-numeral').html(bestpos)
+                $('.footnote-float-numeral-mobile').html(bestpos)
                 $('.footnote-float-content').html($(`.footnotes-list #fn${bestpos}`).html())
 
                 if (isOverflown($('.mobile-fn-float')[0])) {
