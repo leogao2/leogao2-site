@@ -15,13 +15,25 @@ acronyms = {
     'BERT': 'Bidirectional Encoder Representations from Transformers',
     'CDF': 'Cumulative Distribution Function',
     'GPU': 'Graphics Processing Unit',
+    'ILSVRC': 'ImageNet Large Scale Visual Recognition Challenge',
+    'NLP': 'Natural Language Processing',
+    'GAN': 'Generative Adversarial Network',
+    'RMSProp': 'Root Mean Square Propagation',
+    'SOTA': 'State of the Art',
+    'GRU': 'Gated Recurrent Unit',
+    'NAS': 'Neural Architecture Search',
+    'ELMo': 'Embeddings from Language Models',
+    'LM': 'Language Model',
+    'TF': 'Tensorflow',
+    'DQN': 'Deep Q Network',
+    '': '',
 }
 
 // from https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
 function regExpEscape(literal_string) {
     return literal_string.replace(/[-[\]{}()*+!<=:?.\/\\^$|#\s,]/g, '\\$&');
 }
-let acronym_match = new RegExp('\\b(' + Object.keys(acronyms).join('|') + ')(s?)', 'g')
+let acronym_match = new RegExp('\\b(' + Object.keys(acronyms).filter(s=>s).join('|') + ')(s?)', 'g')
 
 // from https://www.reddit.com/r/javascript/comments/6a6lo7/how_can_i_check_if_a_character_is_lower_case_or/ 
 function isLower(character) {

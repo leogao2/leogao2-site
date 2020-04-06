@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-04-06T21:47:11.125Z</updated>
+  <updated>2020-04-06T23:24:52.726Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/"/>
     <id>https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/</id>
     <published>2020-04-01T06:00:00.000Z</published>
-    <updated>2020-04-06T21:47:11.125Z</updated>
+    <updated>2020-04-06T23:24:52.726Z</updated>
     
     <summary type="html">
     
@@ -83,7 +83,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2020-04-02T05:57:10.361Z</updated>
+    <updated>2020-04-06T23:30:45.915Z</updated>
     
     <summary type="html">
     
@@ -104,9 +104,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
-    
       <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
+    
+      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
   </entry>
   
