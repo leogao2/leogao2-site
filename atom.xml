@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-04-02T04:37:15.205Z</updated>
+  <updated>2020-04-06T21:47:11.125Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/"/>
     <id>https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/</id>
     <published>2020-04-01T06:00:00.000Z</published>
-    <updated>2020-04-02T04:37:15.205Z</updated>
+    <updated>2020-04-06T21:47:11.125Z</updated>
     
     <summary type="html">
     
@@ -30,7 +30,7 @@
         
         
           &lt;p&gt;&lt;img src=&quot;/images/imposter_reddit/ui3.png&quot; alt=&quot;A view at the r/Imposter UI&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The new Reddit April Fools social experiment, &lt;a
+&lt;p&gt;&lt;span class=&quot;smallcaps&quot;&gt;The new Reddit April Fools
         
       
     
@@ -55,7 +55,7 @@
     <link href="https://leogao.dev/2020/01/31/Multidisk-Filesystems-A-Comparison/"/>
     <id>https://leogao.dev/2020/01/31/Multidisk-Filesystems-A-Comparison/</id>
     <published>2020-01-31T07:00:00.000Z</published>
-    <updated>2020-02-01T20:45:10.906Z</updated>
+    <updated>2020-04-02T05:57:10.357Z</updated>
     
     <summary type="html">
     
@@ -83,7 +83,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2020-01-04T20:37:13.782Z</updated>
+    <updated>2020-04-02T05:57:10.361Z</updated>
     
     <summary type="html">
     
@@ -115,7 +115,7 @@
     <link href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/"/>
     <id>https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/</id>
     <published>2019-11-09T07:00:00.000Z</published>
-    <updated>2020-01-03T05:35:25.797Z</updated>
+    <updated>2020-04-02T05:57:10.361Z</updated>
     
     <summary type="html">
     
@@ -144,7 +144,7 @@
     <link href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/"/>
     <id>https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/</id>
     <published>2019-10-27T06:00:00.000Z</published>
-    <updated>2020-04-02T03:34:01.938Z</updated>
+    <updated>2020-04-06T20:53:56.213Z</updated>
     
     <summary type="html">
     
@@ -178,7 +178,7 @@
     <link href="https://leogao.dev/2019/09/20/Hello-World/"/>
     <id>https://leogao.dev/2019/09/20/Hello-World/</id>
     <published>2019-09-20T06:00:00.000Z</published>
-    <updated>2020-01-03T05:35:21.241Z</updated>
+    <updated>2020-04-02T05:57:10.361Z</updated>
     
     <summary type="html">
     
