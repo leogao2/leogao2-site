@@ -26,7 +26,15 @@ acronyms = {
     'LM': 'Language Model',
     'TF': 'Tensorflow',
     'DQN': 'Deep Q Network',
-    '': '',
+    'HDF5': 'Hierarchical Data Format 5',
+    '(?:117|124|345|355|774|1542)M': '',
+    'NIPS': 'Neural Information Processing Systems',
+    'NeurIPS': 'Neural Information Processing Systems',
+    'ML': 'Machine Learning',
+    'RL': 'Reinforcement Learning',
+    'AI': 'Artifical Intelligence',
+    'ISO': 'International Organization for Standardization',
+    'XLNet': ''
 }
 
 // from https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
@@ -49,7 +57,7 @@ function replaceAcronyms(elem) {
         if (child.nodeType == 3) {
             newh = child.textContent.replace(acronym_match, (match, p1, p2, offset, string) => {
                 // '<span class="acronym acronym-$1">$1</span>$2'
-                return `<span class="acronym acronym-${p1}">` + p1.split('').map((c) => isLower(c) ? ('<span class="acronymlower">' + c + '</span>') : c).join('') + '</span>' + p2
+                return `<span class="${p1.length > 2 ? 'acronym' : ''} acronym-${p1}">` + p1.split('').map((c) => isLower(c) ? ('<span class="acronymlower">' + c + '</span>') : c).join('') + '</span>' + p2
             })
             //console.log(child.nodeType, child, newh)
             newhtml += newh
@@ -73,6 +81,7 @@ $(() => {
     replaceAcronyms(document.querySelector(".article-entry"))
     
     for (const [key, value] of Object.entries(acronyms)) {
+        if (value == '') continue
         console.log(key)
         tippy('.acronym-'+key, {
             content: value,

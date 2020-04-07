@@ -821,10 +821,12 @@ a.main-title:hover {
 .floating-footnote blockquote,
 .mobile-fn-float blockquote {
   font-family: 'Source Serif Pro', Georgia, "Times New Roman", serif;
-  font-size: 1.3em;
+  font-size: 1.25em;
   margin: 1.5em 20px;
-  text-align: center;
-  white-space: pre;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: normal;
+  max-width: 80%;
 }
 .article-entry blockquote footer,
 .floating-footnote blockquote footer,
@@ -833,11 +835,17 @@ a.main-title:hover {
   margin: 1.5em 0;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
-.article-entry blockquote footer cite:before,
-.floating-footnote blockquote footer cite:before,
-.mobile-fn-float blockquote footer cite:before {
-  content: "—";
+.article-entry blockquote cite,
+.floating-footnote blockquote cite,
+.mobile-fn-float blockquote cite {
   padding: 0 0.5em;
+  display: block;
+  text-align: center;
+}
+.article-entry blockquote cite:before,
+.floating-footnote blockquote cite:before,
+.mobile-fn-float blockquote cite:before {
+  content: "—";
 }
 .article-entry .pullquote,
 .floating-footnote .pullquote,
@@ -1273,8 +1281,10 @@ a.main-title:hover {
 }
 .acronym {
   text-transform: lowercase;
-  font-feature-settings: "smcp";
   font-variant: small-caps;
+}
+.acronymlower {
+  font-variant: normal;
 }
 #comments {
   background: #fff;
