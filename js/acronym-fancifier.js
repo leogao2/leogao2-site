@@ -42,6 +42,7 @@ acronyms = {
     'RAM': 'Random Access Memory',
     'LVM': 'Logical Volume Management',
     'RAID': 'Redundant Array of Independent Disks',
+    'ICLR': 'International Conference on Learning Representations'
 }
 
 // from https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
@@ -54,9 +55,12 @@ let acronym_match = new RegExp('\\b(' + Object.keys(acronyms).filter(s=>s).join(
 function isLower(character) {
     return (character === character.toLowerCase()) && (character !== character.toUpperCase());
 }
+function isUpper(character) {
+    return (character !== character.toLowerCase()) && (character === character.toUpperCase());
+}
 
 function getsSmallCaps(word) {
-    return (word.split('').filter(isLower).length) > 2;
+    return (word.split('').filter(isUpper).length) > 2;
 }
 
 function replaceAcronyms(elem) {
