@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-04-06T23:43:50.135Z</updated>
+  <updated>2020-04-07T16:24:50.365Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/"/>
     <id>https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/</id>
     <published>2020-04-01T06:00:00.000Z</published>
-    <updated>2020-04-06T23:43:50.135Z</updated>
+    <updated>2020-04-07T16:24:50.365Z</updated>
     
     <summary type="html">
     
@@ -44,7 +44,7 @@
     
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
-      <category term="GPT2" scheme="https://leogao.dev/tags/GPT2/"/>
+      <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
       <category term="Reddit" scheme="https://leogao.dev/tags/Reddit/"/>
     
@@ -83,7 +83,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2020-04-06T23:30:45.915Z</updated>
+    <updated>2020-04-07T16:25:19.848Z</updated>
     
     <summary type="html">
     
@@ -104,18 +104,18 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
-    
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
+      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
     
   </entry>
   
   <entry>
-    <title>Converting HuggingFace GPT2 Models to Tensorflow 1.x</title>
+    <title>Converting HuggingFace GPT-2 Models to Tensorflow 1.x</title>
     <link href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/"/>
     <id>https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/</id>
     <published>2019-11-09T07:00:00.000Z</published>
-    <updated>2020-04-02T05:57:10.361Z</updated>
+    <updated>2020-04-07T16:25:53.599Z</updated>
     
     <summary type="html">
     
@@ -135,7 +135,7 @@
     
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
-      <category term="GPT2" scheme="https://leogao.dev/tags/GPT2/"/>
+      <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
   </entry>
   
@@ -144,7 +144,7 @@
     <link href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/"/>
     <id>https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/</id>
     <published>2019-10-27T06:00:00.000Z</published>
-    <updated>2020-04-06T20:53:56.213Z</updated>
+    <updated>2020-04-07T16:26:53.922Z</updated>
     
     <summary type="html">
     
@@ -167,7 +167,7 @@
     
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
-      <category term="GPT2" scheme="https://leogao.dev/tags/GPT2/"/>
+      <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     

@@ -41,19 +41,19 @@ ga('send', 'pageview');
 
 
   
-  <title>Converting HuggingFace GPT2 Models to Tensorflow 1.x | Leo Gao</title>
+  <title>Converting HuggingFace GPT-2 Models to Tensorflow 1.x | Leo Gao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
-<meta name="keywords" content="Machine Learning,Language Models,GPT2">
+<meta name="keywords" content="Machine Learning,Language Models,GPT-2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Converting HuggingFace GPT2 Models to Tensorflow 1.x">
+<meta property="og:title" content="Converting HuggingFace GPT-2 Models to Tensorflow 1.x">
 <meta property="og:url" content="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/index.html">
 <meta property="og:site_name" content="Leo Gao">
 <meta property="og:description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-02T05:57:10.361Z">
+<meta property="og:updated_time" content="2020-04-07T16:25:53.599Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Converting HuggingFace GPT2 Models to Tensorflow 1.x">
+<meta name="twitter:title" content="Converting HuggingFace GPT-2 Models to Tensorflow 1.x">
 <meta name="twitter:description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
 <meta name="twitter:creator" content="@nabla_theta">
   
@@ -135,7 +135,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Converting HuggingFace GPT2 Models to Tensorflow 1.x
+      Converting HuggingFace GPT-2 Models to Tensorflow 1.x
     </h1>
   
 
@@ -157,21 +157,21 @@ ga('send', 'pageview');
 <p>Another bizarre issue was that for the 774M model, saving would result in a protobuf error if metadata saving was enabled. We could copying the <code>.meta</code> over anyways, so this wasn’t a big deal, but it was an ugly kludge.</p>
 <p>All the variables were mapped over to the right names, so I put the resulting checkpoint in the models directory, and… it didn’t work.</p>
 <h1>Third Attempt</h1>
-<p>It turns out that in the original GPT2 model, biases are stored with shape <code>(N)</code> but with shape <code>(1, N)</code> in the TF 2.x model. Even more inexplicably, weights are stored with shape <code>(1, N, N)</code> in the original model while they are stored in a much more sensible <code>(N, N)</code> in the TF 2.x model. I had to add this bit of code to remove the extra dimension for biases but add an <em>extra</em> dimension for weights <em>other than</em> the embedding matrices:</p>
+<p>It turns out that in the original GPT-2 model, biases are stored with shape <code>(N)</code> but with shape <code>(1, N)</code> in the TF 2.x model. Even more inexplicably, weights are stored with shape <code>(1, N, N)</code> in the original model while they are stored in a much more sensible <code>(N, N)</code> in the TF 2.x model. I had to add this bit of code to remove the extra dimension for biases but add an <em>extra</em> dimension for weights <em>other than</em> the embedding matrices:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'ln'</span> <span class="keyword">in</span> new_name <span class="keyword">or</span> <span class="string">'/b'</span> <span class="keyword">in</span> new_name:</span><br><span class="line">    var = var.reshape((<span class="number">-1</span>))</span><br><span class="line"><span class="keyword">if</span> <span class="string">'/w'</span> <span class="keyword">in</span> new_name <span class="keyword">and</span> <span class="keyword">not</span> (<span class="string">'wpe'</span> <span class="keyword">in</span> new_name <span class="keyword">or</span> <span class="string">'wte'</span> <span class="keyword">in</span> new_name):</span><br><span class="line">    var = var.reshape((<span class="number">1</span>, *var.shape))</span><br></pre></td></tr></table></figure>
 <p>All the variables were mapped to the right sizes now, so I put the resulting checkpoint in the models directory, and… it worked!</p>
 <h1>Conclusion</h1>
-<p>Now that we can convert GPT2 checkpoints bidirectionally between any formats, it will hopefully encourage more people to switch to the newer formats, which are, in general, much easier to work with. The next step would be to implement saving to arbitrary formats in the Huggingface transformers repository.</p>
+<p>Now that we can convert GPT-2 checkpoints bidirectionally between any formats, it will hopefully encourage more people to switch to the newer formats, which are, in general, much easier to work with. The next step would be to implement saving to arbitrary formats in the Huggingface transformers repository.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/" data-id="ck8q3zku40002gpmlmos0ddxi" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/" data-id="ck8q49sby0002n1ml3mtbuikn" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPT2/">GPT2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language-Models/">Language Models</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPT-2/">GPT-2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language-Models/">Language Models</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
 
     </footer>
   </div>
@@ -253,7 +253,7 @@ ga('send', 'pageview');
           </li>
         
           <li>
-            <a href="/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/">Converting HuggingFace GPT2 Models to Tensorflow 1.x</a>
+            <a href="/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/">Converting HuggingFace GPT-2 Models to Tensorflow 1.x</a>
           </li>
         
           <li>

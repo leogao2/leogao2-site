@@ -1,7 +1,7 @@
 // transforms acronyms to have small caps.
 
 acronyms = {
-    'GPT2': 'Generative Pretrained Transformer 2',
+    'GPT-2': 'Generative Pretrained Transformer 2',
     'GPT': 'Generative Pretrained Transformer / GUID Partition Table',
     'RNN': 'Recurrent Neural Network',
     'LSTM': 'Long-Short Term Memory',
