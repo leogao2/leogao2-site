@@ -72,13 +72,15 @@ function replaceAcronyms(elem) {
         if (child.nodeType == 3) {
             newh = child.textContent.replace(acronym_match, (match, p1, p2, offset, string) => {
                 // '<span class="acronym acronym-$1">$1</span>$2'
-                return `<span class="${getsSmallCaps(p1) ? 'acronym' : ''} acronym-${p1}">` + p1.split('').map((c) => isLower(c) ? ('<span class="acronymlower">' + c + '</span>') : c).join('') + '</span>' + p2
+                let is_starter = offset == 0 && i == 0 && (elem.tagName != 'STRONG' && elem.tagName != 'EM' || elem.previousSibling && elem.previousSibling.textContent.trim().slice(-1) == '.') || string[offset - 2] == '.'
+                let chaarr = p1.split('').map((c) => isLower(c) ? ('<span class="acronymlower">' + c + '</span>') : c)
+                return `<span class="${getsSmallCaps(p1) ? 'acronym' : ''} acronym-${p1}">${is_starter ? '<span class="acronym-first">' + chaarr[0] + '</span>' : ''}` + (is_starter ? chaarr.slice(1) : chaarr).join('') + '</span>' + p2
             })
             //console.log(child.nodeType, child, newh)
             newhtml += newh
             
         } else if (child.nodeType == 1) {
-            replaceAcronyms(child)
+            if (child.tagName != 'H1' && child.tagName != 'H2' && child.tagName != 'H3') replaceAcronyms(child)
             newhtml += child.outerHTML
             //console.log('dsffdsfdsdsf', child.outerHTML)
         } else {
