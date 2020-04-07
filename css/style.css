@@ -1285,6 +1285,7 @@ a.main-title:hover {
 }
 .acronymlower {
   font-variant: normal;
+  font-size: 0.95em;
 }
 #comments {
   background: #fff;

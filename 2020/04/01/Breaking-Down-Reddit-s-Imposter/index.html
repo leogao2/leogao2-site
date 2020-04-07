@@ -53,7 +53,7 @@ ga('send', 'pageview');
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://leogao.dev/images/imposter_reddit/ui3.png">
 <meta property="og:image" content="https://leogao.dev/images/imposter_reddit/writewithtransformer.png">
-<meta property="og:updated_time" content="2020-04-02T04:37:15.205Z">
+<meta property="og:updated_time" content="2020-04-06T23:43:50.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Breaking Down Reddit&#39;s Imposter">
 <meta name="twitter:description" content="The new Reddit April Fools social experiment, r/Imposter, went live today. The concept is this: users are presented with a list of 5 answers to the question “What makes you human?”, one of which is b">
@@ -149,35 +149,35 @@ ga('send', 'pageview');
         <!-- TOC -->
         
         <p><img src="/images/imposter_reddit/ui3.png" alt="A view at the r/Imposter UI"></p>
-<p>The new Reddit April Fools social experiment, <a href="https://www.reddit.com/r/Imposter/" target="_blank" rel="noopener">r/Imposter</a>, went live today. The concept is this: users are presented with a list of 5 answers to the question “What makes you human?”, one of which is by the Imposter. The challenge is to identify the answer by the Imposter. Users are also able to post an answer to that question, which they can change at any time.</p>
+<p><span class="smallcaps">The new Reddit April Fools social experiment</span>, <a href="https://www.reddit.com/r/Imposter/" target="_blank" rel="noopener">r/Imposter</a>, went live today. The concept is this: users are presented with a list of 5 answers to the question “What makes you human?”, one of which is by the Imposter. The challenge is to identify the answer by the Imposter. Users are also able to post an answer to that question, which they can change at any time.</p>
 <blockquote>
-<p>What makes you human?
-Can you recognize it in others?
-Are you sure?
-—<cite>Reddit 2020</cite></p>
+<p>What makes you human?<br>
+Can you recognize it in others?<br>
+Are you sure?<br>
+<cite>Reddit 2020</cite></p>
 </blockquote>
-<p>As alluded to in the question and the <a href="https://www.reddit.com/r/announcements/comments/ft3e3q/imposter/" target="_blank" rel="noopener">traditional cryptic message</a>, the Imposter is most likely a bot trained to mimic the human responses.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> This piqued my interest, as text generation is <a href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/">right up my alley</a>. So I spent a while toying around with the site, looking at the generated samples, and the weaknesses are very similar to what one would expect from, say, GPT-2.<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> In fact, I’d hazard a guess and say that the model used probably <em>is</em> GPT-2, if for no other reason than for its recent name recognition. There is still a chance of it being some other Transformer or RNN based model, too. It’s highly unlikely to be a rule based system, due to the necessity of constant retraining, or a Markov chain system, due to the surprising coherence (see <a href="https://www.reddit.com/r/SubredditSimulator/" target="_blank" rel="noopener">r/SubredditSimulator</a> for a taste of Markov bots).<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>As alluded to in the question and the <a href="https://www.reddit.com/r/announcements/comments/ft3e3q/imposter/" target="_blank" rel="noopener">traditional cryptic message</a>, the Imposter is most likely a bot trained to mimic the human responses.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> This piqued my interest, as text generation is <a href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/">right up my alley</a>. So I spent a while toying around with the site, looking at the generated samples, and the weaknesses are very similar to what one would expect from, say, GPT2.<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> In fact, I’d hazard a guess and say that the model used probably <em>is</em> GPT2, if for no other reason than for its recent name recognition. There is still a chance of it being some other Transformer or RNN based model, too. It’s highly unlikely to be a rule based system, due to the necessity of constant retraining, or a Markov chain system, due to the surprising coherence (see <a href="https://www.reddit.com/r/SubredditSimulator/" target="_blank" rel="noopener">r/SubredditSimulator</a> for a taste of Markov bots).<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
 <p>Some interesting features of the Imposter, many of which have already been discovered by Redditors:</p>
 <ul>
 <li>
-<p><strong>An <a href="https://www.reddit.com/r/Imposter/comments/ft4grm/process_to_beat_the_bot/" target="_blank" rel="noopener">inability to do math</a>.</strong> This is consistent with GPT-2, which (when trained on WebText) is unable to handle basic arithmetic questions, a feature of how GPT-2 is <a href="https://slatestarcodex.com/2019/02/19/gpt-2-as-step-toward-general-intelligence/" target="_blank" rel="noopener">“creating a model that includes math and somehow doing the math in the model”</a>. This doesn’t mean <em>all</em> transformers are unable to do math, though. When trained directly to do so, Transformers <em>are</em> quite adept at math; <a href="https://arxiv.org/pdf/1904.01557.pdf" target="_blank" rel="noopener">this ICLR 2019 paper</a> shows a <strong>90%</strong> accuracy for extrapolating addition/subtraction problems to numbers larger than seen during training, and <a href="https://openreview.net/pdf?id=S1eZYeHFDS" target="_blank" rel="noopener">this ICLR 2020 paper</a> shows that it’s possible to train a Transformer to do integration and ODEs. Overall, this provides evidence for GPT-2 (or similar) powering the Imposter.
-<img src="/images/imposter_reddit/writewithtransformer.png" alt="GPT-2-large attempts to do math (Write With Transformer)."></p>
+<p><strong>An <a href="https://www.reddit.com/r/Imposter/comments/ft4grm/process_to_beat_the_bot/" target="_blank" rel="noopener">inability to do math</a>.</strong> This is consistent with GPT2, which (when trained on WebText) is unable to handle basic arithmetic questions, a feature of how GPT2 is <a href="https://slatestarcodex.com/2019/02/19/GPT2-as-step-toward-general-intelligence/" target="_blank" rel="noopener">“creating a model that includes math and somehow doing the math in the model”</a>. This doesn’t mean <em>all</em> transformers are unable to do math, though. When trained directly to do so, Transformers <em>are</em> quite adept at math; <a href="https://arxiv.org/pdf/1904.01557.pdf" target="_blank" rel="noopener">this ICLR 2019 paper</a> shows a <strong>90%</strong> accuracy for extrapolating addition/subtraction problems to numbers larger than seen during training, and <a href="https://openreview.net/pdf?id=S1eZYeHFDS" target="_blank" rel="noopener">this ICLR 2020 paper</a> shows that it’s possible to train a Transformer to do integration and ODEs. Overall, this provides evidence for GPT2 (or similar) powering the Imposter.
+<img src="/images/imposter_reddit/writewithtransformer.png" alt="GPT2-large attempts to do math (Write With Transformer)."></p>
 </li>
 <li>
-<p><strong>Sentences are sometimes <a href="https://www.reddit.com/r/Imposter/comments/ft6w8m/its_getting_smarter/" target="_blank" rel="noopener">strikingly coherent</a>, sometimes <a href="https://www.reddit.com/r/Imposter/comments/ft77n8/ive_found_that_the_imposter_often_uses_incorrect/" target="_blank" rel="noopener">blatantly incoherent</a>.</strong> After a few dozen rounds, it becomes obvious that the Imposte is much better some rounds than others. Incidentally, GPT-2 is also known for massive variability in output quality, even with tricks like <a href="https://arxiv.org/pdf/1904.09751.pdf" target="_blank" rel="noopener">nucleus sampling</a>. There is also the confounding factor here of the users that intentionally attempt to post with broken grammar, though, so this should be taken with a grain of salt.</p>
+<p><strong>Sentences are sometimes <a href="https://www.reddit.com/r/Imposter/comments/ft6w8m/its_getting_smarter/" target="_blank" rel="noopener">strikingly coherent</a>, sometimes <a href="https://www.reddit.com/r/Imposter/comments/ft77n8/ive_found_that_the_imposter_often_uses_incorrect/" target="_blank" rel="noopener">blatantly incoherent</a>.</strong> After a few dozen rounds, it becomes obvious that the Imposter is much better some rounds than others. Incidentally, GPT2 is also known for massive variability in output quality, even with tricks like <a href="https://arxiv.org/pdf/1904.09751.pdf" target="_blank" rel="noopener">nucleus sampling</a>. There is also the confounding factor here of the users that intentionally attempt to post with broken grammar, though, so this should be taken with a grain of salt.</p>
 </li>
 </ul>
-<p>Unfortunately, there is no way to confirm for sure whether the model is GPT-2, a different RNN- or Transformer-based model, or something altogether (although both its quality and variance therein, not to mention the hype factor benefit<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>, suggest that it’s GPT-2) before the end of the experiment. Also, many of these points are moot in practice, as a major component of the challenge is the adversarial nature against humans pretending to be bots. Still, it’s been interesting picking apart the clues around this first ever AI-based Reddit April Fools.</p>
+<p>Unfortunately, there is no way to confirm for sure whether the model is GPT2, a different RNN- or Transformer-based model, or something altogether (although both its quality and variance therein, not to mention the hype factor benefit<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>, suggest that it’s GPT2) before the end of the experiment. Also, many of these points are moot in practice, as a major component of the challenge is the adversarial nature against humans pretending to be bots. Still, it’s been interesting picking apart the clues around this first ever AI-based Reddit April Fools.</p>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>Some <a href="https://www.reddit.com/r/Imposter/comments/ft6iuq/congrats_reddit_in_only_a_few_hours_we_already/" target="_blank" rel="noopener">amusing</a> <a href="https://www.reddit.com/r/Imposter/comments/ft5viw/mrimposter_is_getting_kinky/" target="_blank" rel="noopener">examples</a> <a href="https://www.reddit.com/r/Imposter/comments/ft6w8m/its_getting_smarter/" target="_blank" rel="noopener">of</a> <a href="https://www.reddit.com/r/Imposter/comments/ft8hd0/beans/" target="_blank" rel="noopener">the</a> <a href="https://www.reddit.com/r/Imposter/comments/fta5f0/the_bot_just_rickrolled_me/" target="_blank" rel="noopener">bot</a> picking up on reddit idiosyncrasies have already emerged. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>An interesting aspect of this experiment is that one can also <em>intentionally sabotage</em> other users by pretending to be the Imposte, using similar broken sentences. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>An interesting aspect of this experiment is that one can also <em>intentionally sabotage</em> other users by pretending to be the Imposter, using similar broken sentences. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p>One particular chatbot that has been mentioned many times on the subreddit is Cleverbot, which, according to <a href="https://www.livescience.com/15940-cleverbot-computer-chats-human.html" target="_blank" rel="noopener">this article</a>, works by storing human responses and using some (undisclosed) algorithm to choose responses from this database. In other words, Cleverbot does not actually generate sentences. This probably wouldn’t work very well for r/Imposte, as it has a fixed prompt and becomes indiscernible if the bot simply copies user answers. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p>One particular chatbot that has been mentioned many times on the subreddit is Cleverbot, which, according to <a href="https://www.livescience.com/15940-cleverbot-computer-chats-human.html" target="_blank" rel="noopener">this article</a>, works by storing human responses and using some (undisclosed) algorithm to choose responses from this database. In other words, Cleverbot does not actually generate sentences. This probably wouldn’t work very well for r/Imposter, as it has a fixed prompt and becomes indiscernible if the bot simply copies user answers. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn4" class="footnote-item"><p>If it does turn out to be GPT-2 (or even better, a new and improved <del>GPT-3</del> GPT-2-Episode-2), there will likely be <em>another</em> wave of media hype. Brace yourselves. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+<li id="fn4" class="footnote-item"><p>If it does turn out to be GPT2 (or even better, a new and improved <del>GPT-3</del> GPT2-Episode-2), there will likely be <em>another</em> wave of media hype. Brace yourselves. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -185,7 +185,7 @@ Are you sure?
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/" data-id="ck8i9sykl0001camlh3dj9nwu" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/" data-id="ck8p59s0v0001kwmllgr2vvyk" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -328,6 +328,9 @@ Are you sure?
 
 <script src="/js/jquery.min.js"></script>
 <script src="/js/footnotes.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="/js/acronym-fancifier.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
