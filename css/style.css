@@ -637,6 +637,7 @@ a.main-title:hover {
   margin-top: 40px;
   font-feature-settings: "smcp";
   font-variant: small-caps;
+  font-variant-numeric: lining-nums;
 }
 .main-info {
   margin-top: 10px;
@@ -1286,6 +1287,10 @@ a.main-title:hover {
 .acronymlower {
   font-variant: normal;
   font-size: 0.95em;
+}
+.acronym-first {
+  font-variant: normal;
+  text-transform: uppercase;
 }
 #comments {
   background: #fff;
