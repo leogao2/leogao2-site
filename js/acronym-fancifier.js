@@ -34,7 +34,14 @@ acronyms = {
     'RL': 'Reinforcement Learning',
     'AI': 'Artifical Intelligence',
     'ISO': 'International Organization for Standardization',
-    'XLNet': ''
+    'XLNet': '',
+    'L2ARC': 'Level 2 Adjustable Replacement Cache',
+    'SSD': 'Solid State Drive',
+    'ZFS': '',
+    'MDADM': '',
+    'RAM': 'Random Access Memory',
+    'LVM': 'Logical Volume Management',
+    'RAID': 'Redundant Array of Independent Disks',
 }
 
 // from https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
@@ -48,6 +55,10 @@ function isLower(character) {
     return (character === character.toLowerCase()) && (character !== character.toUpperCase());
 }
 
+function getsSmallCaps(word) {
+    return (word.split('').filter(isLower).length) > 2;
+}
+
 function replaceAcronyms(elem) {
     //console.log('ENTER')
     let newhtml = ''
@@ -57,7 +68,7 @@ function replaceAcronyms(elem) {
         if (child.nodeType == 3) {
             newh = child.textContent.replace(acronym_match, (match, p1, p2, offset, string) => {
                 // '<span class="acronym acronym-$1">$1</span>$2'
-                return `<span class="${p1.length > 2 ? 'acronym' : ''} acronym-${p1}">` + p1.split('').map((c) => isLower(c) ? ('<span class="acronymlower">' + c + '</span>') : c).join('') + '</span>' + p2
+                return `<span class="${getsSmallCaps(p1) ? 'acronym' : ''} acronym-${p1}">` + p1.split('').map((c) => isLower(c) ? ('<span class="acronymlower">' + c + '</span>') : c).join('') + '</span>' + p2
             })
             //console.log(child.nodeType, child, newh)
             newhtml += newh
