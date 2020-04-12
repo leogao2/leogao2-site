@@ -655,6 +655,10 @@ a.main-title:hover {
   color: #555;
   padding: 0 20px;
   font-variant-numeric: oldstyle-nums proportional-nums;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
   text-align: justify;
 }
 .article-entry:before,
@@ -722,6 +726,10 @@ a.main-title:hover {
   line-height: 1.1em;
   margin: 1.1em 0;
   text-align: left;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 .article-entry a,
 .floating-footnote a,
@@ -1281,16 +1289,22 @@ a.main-title:hover {
   float: left;
 }
 .acronym {
-  text-transform: lowercase;
+  font-feature-settings: 'smcp', 'c2sc';
+}
+em .acronym {
   font-variant: small-caps;
+  text-transform: lowercase;
 }
 .acronymlower {
-  font-variant: normal;
   font-size: 0.95em;
+  font-feature-settings: normal;
 }
 .acronym-first {
   font-variant: normal;
   text-transform: uppercase;
+}
+.main-info {
+  text-align: justify;
 }
 #comments {
   background: #fff;
