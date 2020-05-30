@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+        <!--
+            What brings you to these parts, fellow adventurer?
+        -->
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146499048-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript">
+    function timer11(){ga('send', 'event', 'TimeOnPage', '1', '11-30 seconds', { 'nonInteraction': 1 });}
+    function timer31(){ga('send', 'event', 'TimeOnPage', '2', '31-60 seconds', { 'nonInteraction': 1 });}
+    function timer61(){ga('send', 'event', 'TimeOnPage', '3', '61-180 seconds', { 'nonInteraction': 1 });}
+    function timer181(){ga('send', 'event', 'TimeOnPage', '4', '181-600 seconds', { 'nonInteraction': 1 });}
+    function timer601(){ga('send', 'event', 'TimeOnPage', '5', '601-1800 seconds', { 'nonInteraction': 1 });}
+    function timer1801(){ga('send', 'event', 'TimeOnPage', '6', '1801+ seconds', { 'nonInteraction': 1 });}
+    ga('send', 'event', 'TimeOnPage', '0', '0-10 seconds', { 'nonInteraction': 1 });
+    setTimeout(timer11,11000);
+    setTimeout(timer31,31000);
+    setTimeout(timer61,61000);
+    setTimeout(timer181,181000);
+    setTimeout(timer601,601000);
+    setTimeout(timer1801,1801000);
+</script>
+
+<!-- End Google Analytics -->
+
+
+  
+  <title>Converting HuggingFace GPT-2 Models to Tensorflow 1.x | Leo Gao</title>
+  <script>
+    var Hyphenopoly = {
+        require: {
+            "en-us": "Supercalifragilisticexpialidocious"
+        },
+        setup: {
+            selectors: {
+                ".article-entry": {},
+                ".main-info": {}
+            }
+        }
+    };
+    </script>   
+    <script src="/js/Hyphenopoly_Loader.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
+<meta name="keywords" content="Machine Learning,Language Models,GPT-2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Converting HuggingFace GPT-2 Models to Tensorflow 1.x">
+<meta property="og:url" content="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/index.html">
+<meta property="og:site_name" content="Leo Gao">
+<meta property="og:description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-04-07T16:33:31.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Converting HuggingFace GPT-2 Models to Tensorflow 1.x">
+<meta name="twitter:description" content="HuggingFace Transformers is a wonderful suite of tools for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code pu">
+<meta name="twitter:creator" content="@nabla_theta">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo Gao" type="application/atom+xml">
+  
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="https://twitter.com/nabla_theta">Twitter</a>
+        
+          <a class="main-nav-link" href="https://github.com/leogao2">Github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <!--a id="nav-search-btn" class="nav-icon" title="Search"></a-->
+      </nav>
+      <!--div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://leogao.dev"></form>
+      </div-->
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Converting-HuggingFace-GPT2-Models-to-Tensorflow-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <div class="article-date">
+  Created: <time datetime="2019-11-09T07:00:00.000Z" itemprop="datePublished">2019-11-09</time>&emsp;
+  Modified: <time datetime="2019-11-09T07:00:00.000Z" itemprop="datePublished">2019-11-09</time>
+</div>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Converting HuggingFace GPT-2 Models to Tensorflow 1.x
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+        
+        <p><span class="smallcaps"><a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">HuggingFace Transformers</a> is a wonderful suite of tools</span> for working with transformer models in both Tensorflow 2.x and Pytorch. However, many tools are still written against the original TF 1.x code published by OpenAI. Unfortunately, the model format is different between the TF 2.x models and the original code, which makes it difficult to use models trained on the new code with the old code. There are many tools for converting the old format to TF 2.x and Pytorch, but not vice versa. In this blog post, I will share the (frustrating) process of getting the conversion to work.</p>
+<h1>I just want the code!</h1>
+<p>The complete code is available <a href="https://github.com/leogao2/gpt2-hf-to-tf1" target="_blank" rel="noopener">here</a>. If there are any improvements you’d like to make, please open a PR!</p>
+<h1>First Attempt</h1>
+<p>My first attempt was to use <code>TFGPT2LMHeadModel</code> to convert Pytorch models to tensorflow, and then save a tensorflow checkpoint immediately using <code>save_pretrained</code>. However, I immediately ran into a problem: <code>save_pretrained</code> saves the result as an HDF5 file, instead of as a TF checkpoint. After some mucking around, I found that the <code>save_pretrained</code> method called the <code>save_weights</code> method with a fixed <code>tf_model.h5</code> filename, and <code>save_weights</code> inferred the save format via the extension. The solution was just to call <code>save_weights</code> directly, bypassing the hardcoded filename. This wouldn’t save the <code>.meta</code> file containing the graph, but since the graph was the same as in the original OpenAI checkpoints, they could just be copied over.</p>
+<p>The model checkpoint seemed to have the right format, so I put the resulting checkpoint in the models directory, and… it didn’t work.</p>
+<h1>Second Attempt</h1>
+<p>Due to the use of keras modules (and differently named variables), the variable names were significantly different; <code>model/h0/attn/c_attn/w</code> in the OpenAI model was <code>transformer/<wbr>h/<wbr>0/<wbr>attn/<wbr>c_attn/<wbr>weight/<wbr>.ATTRIBUTES/<wbr>VARIABLE_VALUE</code> in the huggingface tf model! I found a <a href="https://gist.github.com/batzner/7c24802dd9c5e15870b4b56e22135c96" target="_blank" rel="noopener">script for renaming tf variables in checkpoints</a> to use as a starting point and painstakingly combed through the differences in variable names to produce this hodgepodge:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">new_name = new_name[<span class="number">12</span>:].replace(<span class="string">'/.ATTRIBUTES/VARIABLE_VALUE'</span>, <span class="string">''</span>)</span><br><span class="line">new_name = new_name.replace(<span class="string">'weight'</span>, <span class="string">'w'</span>)</span><br><span class="line">new_name = new_name.replace(<span class="string">'bias'</span>, <span class="string">'b'</span>)</span><br><span class="line">new_name = new_name.replace(<span class="string">'beta'</span>, <span class="string">'b'</span>)</span><br><span class="line">new_name = new_name.replace(<span class="string">'gamma'</span>, <span class="string">'g'</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">'wpe'</span> <span class="keyword">in</span> new_name:</span><br><span class="line">    new_name = <span class="string">'wpe'</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">'wte'</span> <span class="keyword">in</span> new_name:</span><br><span class="line">    new_name = <span class="string">'wte'</span></span><br><span class="line">new_name = <span class="string">'model/'</span> + new_name</span><br><span class="line">new_name = new_name.replace(<span class="string">'/h/'</span>, <span class="string">'/h'</span>)</span><br></pre></td></tr></table></figure>
+<p>Another bizarre issue was that for the 774M model, saving would result in a protobuf error if metadata saving was enabled. We could copying the <code>.meta</code> over anyways, so this wasn’t a big deal, but it was an ugly kludge.</p>
+<p>All the variables were mapped over to the right names, so I put the resulting checkpoint in the models directory, and… it didn’t work.</p>
+<h1>Third Attempt</h1>
+<p>It turns out that in the original GPT-2 model, biases are stored with shape <code>(N)</code> but with shape <code>(1, N)</code> in the TF 2.x model. Even more inexplicably, weights are stored with shape <code>(1, N, N)</code> in the original model while they are stored in a much more sensible <code>(N, N)</code> in the TF 2.x model. I had to add this bit of code to remove the extra dimension for biases but add an <em>extra</em> dimension for weights <em>other than</em> the embedding matrices:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'ln'</span> <span class="keyword">in</span> new_name <span class="keyword">or</span> <span class="string">'/b'</span> <span class="keyword">in</span> new_name:</span><br><span class="line">    var = var.reshape((<span class="number">-1</span>))</span><br><span class="line"><span class="keyword">if</span> <span class="string">'/w'</span> <span class="keyword">in</span> new_name <span class="keyword">and</span> <span class="keyword">not</span> (<span class="string">'wpe'</span> <span class="keyword">in</span> new_name <span class="keyword">or</span> <span class="string">'wte'</span> <span class="keyword">in</span> new_name):</span><br><span class="line">    var = var.reshape((<span class="number">1</span>, *var.shape))</span><br></pre></td></tr></table></figure>
+<p>All the variables were mapped to the right sizes now, so I put the resulting checkpoint in the models directory, and… it worked!</p>
+<h1>Conclusion</h1>
+<p>Now that we can convert GPT-2 checkpoints bidirectionally between any formats, it will hopefully encourage more people to switch to the newer formats, which are, in general, much easier to work with. The next step would be to implement saving to arbitrary formats in the Huggingface transformers repository.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/" data-id="ckata8cof0001m1ml5z37ifez" class="article-share-link">Share</a>
+      
+        <a href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPT-2/">GPT-2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language-Models/">Language Models</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/31/The-Decade-of-Deep-Learning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          The Decade of Deep Learning
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">The Difficulties of Text Generation using Autoregressive Language Models: A Brief Overview</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside class="sidebar sidebar-left">
+    <div class="leftfnbegin"></div>
+    <div class="sidebar-left-footnotes"></div>
+</aside>
+<aside class="sidebar sidebar-right">
+    
+      
+  <div class="widget-wrap sidebar-align">
+    <h3 class="widget-title">About Me</h3>
+    <ul class="about-me">
+      
+      <li><div class="avatar"><img class="ava-img" title="About me" src="/images/profile_small.png" /></div></li>
+      
+      <div class="authname">Leo Gao</div>
+      <div class="sdesc"></div>
+
+      <div class="contact">
+          <div class="contact-item"><a href="https://twitter.com/nabla_theta"><i class="fa fa-twitter" aria-hidden="true"></i> @nabla_theta</a></div>
+          <div class="contact-item"><a href="https://github.com/leogao2"><i class="fa fa-github" aria-hidden="true"></i> leogao2</a></div>
+          <div class="contact-item"><a href="mailto:leogao31@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> leogao31@gmail.com</a></div>
+      </div>
+    </ul>
+
+
+  </div>
+  
+    
+      
+  <div class="widget-wrap sidebar-align">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget recentposts">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/29/An-Overview-of-GPT-3/">GPT-3: A Brief Summary</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/01/Breaking-Down-Reddit-s-Imposter/">Breaking Down Reddit&#39;s Imposter</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/31/Multidisk-Filesystems-A-Comparison/">Multidisk Filesystems: A Comparison</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/31/The-Decade-of-Deep-Learning/">The Decade of Deep Learning</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/">Converting HuggingFace GPT-2 Models to Tensorflow 1.x</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+    <div class="rightfnbegin"></div>
+    <div class="sidebar-right-footnotes"></div>
+
+</aside>
+
+<div class="mobile-fn-float-wrapper">
+    <div class="mobile-fn-float">
+        <div class="footnote-float-numeral footnote-float-numeral-mobile"></div>
+        <div class="footnote-float-content"></div>
+        <div class="footnote-float-overflow">...</div>
+    </div>
+</div>
+        
+      </div>
+      <!--
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Leo Gao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+-->
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://twitter.com/nabla_theta" class="mobile-nav-link">Twitter</a>
+  
+    <a href="https://github.com/leogao2" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'blogotorium';
+  
+  var disqus_url = 'https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/footnotes.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="/js/acronym-fancifier.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
