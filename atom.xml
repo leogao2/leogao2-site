@@ -18,8 +18,8 @@
   
   <entry>
     <title>GPT-3: A Brief Summary</title>
-    <link href="https://leogao.dev/2020/05/29/An-Overview-of-GPT-3/"/>
-    <id>https://leogao.dev/2020/05/29/An-Overview-of-GPT-3/</id>
+    <link href="https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/"/>
+    <id>https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/</id>
     <published>2020-05-29T06:00:00.000Z</published>
     <updated>2020-05-30T06:55:37.469Z</updated>
     
@@ -69,11 +69,11 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
+      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
+    
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
-    
-      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
     
       <category term="Reddit" scheme="https://leogao.dev/tags/Reddit/"/>
     
@@ -192,11 +192,11 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
+      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
+    
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
-    
-      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
     
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
