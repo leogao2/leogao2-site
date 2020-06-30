@@ -70,7 +70,7 @@ ga('send', 'pageview');
 <meta property="og:image" content="https://leogao.dev/images/gpt3/perf-small.png">
 <meta property="og:image" content="https://leogao.dev/images/gpt3/newsgen-small.png">
 <meta property="og:image" content="https://leogao.dev/images/gpt3/perf_scaling_compute.png">
-<meta property="og:updated_time" content="2020-06-01T00:44:14.122Z">
+<meta property="og:updated_time" content="2020-06-30T17:36:03.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Why GPT-3 Matters">
 <meta name="twitter:description" content="The sheer scale of the new GPT-3 model is hard to overstate; it’s an entire order of magnitude larger than Microsoft’s already-massive 17B parameter Turing-NLG.[1] Loading the entire model’s weights">
@@ -166,7 +166,7 @@ ga('send', 'pageview');
         <!-- TOC -->
         
         <p><img src="/images/gpt3/title.png" alt="Number of Parameters of GPT-3 compared to previous models. (&lt;a href='https://www.willstats.com/'&gt;Edited by WillStats&lt;/a&gt;, &lt;a href='https://arxiv.org/abs/1910.01108'&gt;Original 1&lt;/a&gt;, &lt;a href='https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/'&gt;Original 2&lt;/a&gt;)"></p>
-<p><span class="smallcaps">The sheer scale of the new GPT-3 model</span> is hard to overstate; it’s an entire <em>order of magnitude</em> larger than Microsoft’s <a href="https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/" target="_blank" rel="noopener">already-massive 17B parameter Turing-NLG</a>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> Loading the entire model’s weights in fp16 would take up an absolutely preposterous 300GB of VRAM, not even including the gradients. But, with massive size comes massive generalization ability: GPT-3 is competitive in many benchmarks <em>without even tuning on the target task</em>. And when I say many, I mean <em>many</em>—the full, 72-page paper contains an extensive evaluation of GPT-3 on many NLP datasets. Perhaps the most impressive part, though, is that even at such a massive scale, the model still scales smoothly in performance instead of plateauing, implying that still-larger models would perform <em>even better</em>. Throughout the rest of this post, my goal is to distill this massive (in multiple ways) paper down to a digestible size, and shed some light on why it xmatters.</p>
+<p><span class="smallcaps">The sheer scale of the new GPT-3 model</span> is hard to overstate; it’s an entire <em>order of magnitude</em> larger than Microsoft’s <a href="https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/" target="_blank" rel="noopener">already-massive 17B parameter Turing-NLG</a>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> Loading the entire model’s weights in fp16 would take up an absolutely preposterous 300GB of VRAM, not even including the gradients. But, with massive size comes massive generalization ability: GPT-3 is competitive in many benchmarks <em>without even tuning on the target task</em>. And when I say many, I mean <em>many</em>—the full, 72-page paper contains an extensive evaluation of GPT-3 on many NLP datasets. Perhaps the most impressive part, though, is that even at such a massive scale, the model still scales smoothly in performance instead of plateauing, implying that still-larger models would perform <em>even better</em>. Throughout the rest of this post, my goal is to distill this massive (in multiple ways) paper down to a digestible size, and shed some light on why it matters.</p>
 <h1>Model</h1>
 <p>The following table summarizes some of the largest autoregressive Transformer models of the past few years. I’ve excluded models like <a href="https://arxiv.org/abs/1906.08237" target="_blank" rel="noopener">XLNet</a> and BERT-derivatives because they don’t have the same unidirectional autoregressive training target.</p>
 <table class="equalwidth lining-nums">
@@ -261,7 +261,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/" data-id="ckbfi6vyh0004s9mlrtbbairj" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/" data-id="ckc27r0bt0005c6mlb1y44vgo" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/#disqus_thread" class="article-comment-link">Comments</a>
       
