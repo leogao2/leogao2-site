@@ -1307,6 +1307,13 @@ em .acronym {
 .main-info {
   text-align: justify;
 }
+.main-info a {
+  color: inherit;
+  text-decoration: underline;
+}
+.main-info a:hover {
+  color: #777;
+}
 .lining-nums {
   font-variant-numeric: lining-nums;
 }
