@@ -51,6 +51,7 @@ acronyms = {
     'CTRL': '',
     'BPE': 'Byte-Pair Encoding',
     'PTB': 'Penn Tree Bank',
+    'AGI': 'Artificial General Intelligence',
 }
 
 // from https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript

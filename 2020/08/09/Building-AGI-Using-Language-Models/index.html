@@ -70,7 +70,7 @@ ga('send', 'pageview');
 <meta property="og:image" content="https://leogao.dev/images/agi-lms/mesa.png">
 <meta property="og:image" content="https://leogao.dev/images/agi-lms/mcts.png">
 <meta property="og:image" content="https://leogao.dev/images/agi-lms/paperclipsamzn.png">
-<meta property="og:updated_time" content="2020-08-09T19:31:27.428Z">
+<meta property="og:updated_time" content="2020-08-09T19:34:19.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Building AGI Using Language Models">
 <meta name="twitter:description" content="This post is a draft. Despite the buzz around GPT-3, it is, in and of itself, not AGI. In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playi">
@@ -191,7 +191,7 @@ H(X) = -\mathbb E[\log \mathbb P(X)] = -\sum_{x \in \Omega} f_X(x) \log f_X(x)
 <p>We can represent the agent state as natural language, too. Since the agent state is just a compressed representation of the observations, we can ask the language model to summarize the important information of any observations for its own internal world state. The language model could be used to periodically prune (i.e forget) the information inside its state, too, to make room for more observations.</p>
 <p>Altogether, this gets us a system where we can pass observations from the outside world in, spend some time thinking about what to do, and output an action in natural language.</p>
 <p>To handle input, you could have an input module that turns various modalities of observations into summarized text with respect to the current agent state. For instance, you could use something like <a href="https://openai.com/blog/image-gpt/" target="_blank" rel="noopener">iGPT</a> to input camera images or screenshots, or raw HTML from webpages that the agent requests. How exactly this is done is tangential to the point; all that matters is that somehow the inputs are all converted to text and added to the agent state. The examples I have provided are just to convince you that it’s absolutely not insurmountable.</p>
-<p>Finally, to get the model to actually act in the world, you could again use the language model to translate natural language into <a href="https://www.pscp.tv/Microsoft/1OyKAYWPRrWKb?t=29m19s" target="_blank" rel="noopener">code that is then executed</a>, or <a href="https://vimeo.com/427943407/98fe5258a7" target="_blank" rel="noopener">shell commands</a>, or sequences of keypresses, or any of a number of other possible ways. Like input, there are an infinitude of different ways to solve the output problem, and which one turns out to be the best is entirely irrelevant to our discussion; all that matters is that it’s possible to get various modalities in and out of the core system, which handles only text.<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup></p>
+<p>Finally, to get the model to actually act in the world, you could again use the language model to translate natural language into <a href="https://www.pscp.tv/Microsoft/1OyKAYWPRrWKb?t=29m19s" target="_blank" rel="noopener">code that is then executed</a>, or <a href="https://vimeo.com/427943407/98fe5258a7" target="_blank" rel="noopener">shell commands</a>, or sequences of keypresses, or any of a number of other possible ways. Like input, there are an infinitude of different ways to solve the output problem, and which one turns out to be the best is entirely irrelevant to our discussion; all that matters is that it’s possible to get various modalities in and out of the text-only agent.<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup></p>
 <p><img src="/images/agi-lms/paperclipsamzn.png" alt="An example of an input module taking a screenshot input combined with the current agent state to give an observation with the information needed by the agent."></p>
 <h1>Conclusion</h1>
 <p>This is more a thought experiment than something that’s actually going to happen tomorrow; GPT-3 today just isn’t good enough at world modelling. Also, this method depends heavily on at least one major assumption—that bigger future models will have much better world modelling capabilities—and a bunch of other smaller implicit assumptions. <strong><span class="smallcaps">However</span></strong>, this might be the closest thing we ever get to a chance to <a href="https://intelligence.org/2017/10/13/fire-alarm/" target="_blank" rel="noopener">sound the fire alarm</a> for AGI: there’s now a concrete path to proto-AGI that has a non-negligable chance of working.</p>
@@ -229,7 +229,7 @@ Going from a model that just strings uniformly chosen words together to a model 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2020/08/09/Building-AGI-Using-Language-Models/" data-id="ckdnczoku00010rfmmrx0d7mf" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2020/08/09/Building-AGI-Using-Language-Models/" data-id="ckdnhkc850004aqfmnxq5gw5q" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2020/08/09/Building-AGI-Using-Language-Models/#disqus_thread" class="article-comment-link">Comments</a>
       
