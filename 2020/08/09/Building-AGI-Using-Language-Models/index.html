@@ -57,19 +57,19 @@ ga('send', 'pageview');
     </script>   
     <script src="/js/Hyphenopoly_Loader.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Despite the buzz around GPT-3, it is, in and of itself, not AGI. In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playing Chess/Go, or writin">
+  <meta name="description" content="This post is a draft. Despite the buzz around GPT-3, it is, in and of itself, not AGI. In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playi">
 <meta name="keywords" content="Language Models,GPT-3,Alignment,AGI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building AGI Using Language Models">
 <meta property="og:url" content="https://leogao.dev/2020/08/09/Building-AGI-Using-Language-Models/index.html">
 <meta property="og:site_name" content="Leo Gao">
-<meta property="og:description" content="Despite the buzz around GPT-3, it is, in and of itself, not AGI. In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playing Chess/Go, or writin">
+<meta property="og:description" content="This post is a draft. Despite the buzz around GPT-3, it is, in and of itself, not AGI. In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playi">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://leogao.dev/images/agi-lms/sunset1.jpg">
-<meta property="og:updated_time" content="2020-08-09T17:09:39.895Z">
+<meta property="og:updated_time" content="2020-08-09T17:12:55.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Building AGI Using Language Models">
-<meta name="twitter:description" content="Despite the buzz around GPT-3, it is, in and of itself, not AGI. In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playing Chess/Go, or writin">
+<meta name="twitter:description" content="This post is a draft. Despite the buzz around GPT-3, it is, in and of itself, not AGI. In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playi">
 <meta name="twitter:image" content="https://leogao.dev/images/agi-lms/sunset1.jpg">
 <meta name="twitter:creator" content="@nabla_theta">
   
@@ -162,6 +162,7 @@ ga('send', 'pageview');
         <!-- TOC -->
         
         <p><img src="/images/agi-lms/sunset1.jpg" alt></p>
+<p><em><strong>This post is a draft.</strong></em></p>
 <p><span class="smallcaps">Despite the buzz around GPT-3, it is, in and of itself, not AGI.</span> In many ways, this makes it similar to AlphaGo or Deep Blue; while approaching human abiliy in one domain (playing Chess/Go, or writing <em>really</em> impressively), it doesn’t really seem like it will do <span class="smallcaps"><a href="https://wiki.lesswrong.com/wiki/Intelligence_explosion" target="_blank" rel="noopener">Scary AGI Things™</a></span> any more than AlphaGo is going to be turning the Earth into paperclips anytime soon. While its writings are impressive at emulating humans, GPT-3 (or any potential future GPT-x) has no memory of past interactions, nor is it able to follow goals or maximize utility. However, language modelling has one <em>crucial</em> difference from Chess or Go or image classification. Natural language essentially encodes information about the world—the <em>entire</em> world, not just the world of the Goban, in a way much more expressive way than any other modality ever could.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> By harnessing the world model embedded in the language model, it may be possible to build a proto-AGI.</p>
 <h1>World Modelling</h1>
 <p>The explicit goal of a language model is only to <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation" target="_blank" rel="noopener">maximize likelihood</a> of the model on natural language data. In the <a href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/">autoregressive formulation</a> that GPT-3 uses, this means being able to predict the next word as well as possible. However, this objective places much more weight on large, text-scale differences than fine, subtle differences in semantic meaning and logical coherency, which reflect as very subtle shifts in distribution.</p>
@@ -212,7 +213,7 @@ Going from a model that just strings uniformly chosen words together to a model 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://leogao.dev/2020/08/09/Building-AGI-Using-Language-Models/" data-id="ckdna40ei000175fm2jg09lc1" class="article-share-link">Share</a>
+      <a data-url="https://leogao.dev/2020/08/09/Building-AGI-Using-Language-Models/" data-id="ckdncih6v0002t1fmjnu5oina" class="article-share-link">Share</a>
       
         <a href="https://leogao.dev/2020/08/09/Building-AGI-Using-Language-Models/#disqus_thread" class="article-comment-link">Comments</a>
       
