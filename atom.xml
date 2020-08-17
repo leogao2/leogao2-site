@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-07-20T18:42:10.773Z</updated>
+  <updated>2020-08-17T05:43:56.215Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Building AGI Using Language Models</title>
+    <link href="https://leogao.dev/2020/08/17/Building-AGI-Using-Language-Models/"/>
+    <id>https://leogao.dev/2020/08/17/Building-AGI-Using-Language-Models/</id>
+    <published>2020-08-17T06:00:00.000Z</published>
+    <updated>2020-08-17T05:43:56.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/images/agi-lms/sunset1-glitch.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;smallcaps&quot;&gt;Despite the buzz around GPT-3, it is, in and of
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
+      <category term="GPT-3" scheme="https://leogao.dev/tags/GPT-3/"/>
+    
+      <category term="Alignment" scheme="https://leogao.dev/tags/Alignment/"/>
+    
+      <category term="AGI" scheme="https://leogao.dev/tags/AGI/"/>
+    
+  </entry>
   
   <entry>
     <title>Why GPT-3 Matters</title>
@@ -67,13 +99,13 @@
     
     
     
-      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
-    
-      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
-    
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
+    
+      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
     
       <category term="Reddit" scheme="https://leogao.dev/tags/Reddit/"/>
     
@@ -133,9 +165,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
-    
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
+    
+      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
     
   </entry>
   
@@ -160,9 +192,9 @@
     
     
     
-      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
-    
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
@@ -190,13 +222,13 @@
     
     
     
-      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
-    
-      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
-    
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
+    
+      <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
     
       <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
