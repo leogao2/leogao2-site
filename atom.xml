@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-08-17T05:43:56.215Z</updated>
+  <updated>2020-08-20T03:54:57.851Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2020/08/17/Building-AGI-Using-Language-Models/"/>
     <id>https://leogao.dev/2020/08/17/Building-AGI-Using-Language-Models/</id>
     <published>2020-08-17T06:00:00.000Z</published>
-    <updated>2020-08-17T05:43:56.215Z</updated>
+    <updated>2020-08-20T03:54:57.851Z</updated>
     
     <summary type="html">
     
@@ -99,9 +99,9 @@
     
     
     
-      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
-    
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
@@ -144,7 +144,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2020-04-07T16:25:19.848Z</updated>
+    <updated>2020-08-20T03:56:09.258Z</updated>
     
     <summary type="html">
     
@@ -165,9 +165,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
-    
       <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
+    
+      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
   </entry>
   
@@ -192,9 +192,9 @@
     
     
     
-      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
-    
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
@@ -222,9 +222,9 @@
     
     
     
-      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
-    
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
+    
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
