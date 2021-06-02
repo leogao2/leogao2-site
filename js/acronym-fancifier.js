@@ -15,6 +15,7 @@ acronyms = {
     'GELU': 'Gaussian Exponential Linear Unit',
     'BERT': 'Bidirectional Encoder Representations from Transformers',
     'CDF': 'Cumulative Distribution Function',
+    'EDF': 'Empirical Distribution Function',
     'GPU': 'Graphics Processing Unit',
     'ILSVRC': 'ImageNet Large Scale Visual Recognition Challenge',
     'NLP': 'Natural Language Processing',

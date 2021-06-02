@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+        <!--
+            What brings you to these parts, fellow adventurer?
+        -->
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-146499048-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript">
+    function timer11(){ga('send', 'event', 'TimeOnPage', '1', '11-30 seconds', { 'nonInteraction': 1 });}
+    function timer31(){ga('send', 'event', 'TimeOnPage', '2', '31-60 seconds', { 'nonInteraction': 1 });}
+    function timer61(){ga('send', 'event', 'TimeOnPage', '3', '61-180 seconds', { 'nonInteraction': 1 });}
+    function timer181(){ga('send', 'event', 'TimeOnPage', '4', '181-600 seconds', { 'nonInteraction': 1 });}
+    function timer601(){ga('send', 'event', 'TimeOnPage', '5', '601-1800 seconds', { 'nonInteraction': 1 });}
+    function timer1801(){ga('send', 'event', 'TimeOnPage', '6', '1801+ seconds', { 'nonInteraction': 1 });}
+    ga('send', 'event', 'TimeOnPage', '0', '0-10 seconds', { 'nonInteraction': 1 });
+    setTimeout(timer11,11000);
+    setTimeout(timer31,31000);
+    setTimeout(timer61,61000);
+    setTimeout(timer181,181000);
+    setTimeout(timer601,601000);
+    setTimeout(timer1801,1801000);
+</script>
+
+<!-- End Google Analytics -->
+
+
+  
+  <title>Thoughts on the Alignment Implications of Scaling Language Models | Leo Gao</title>
+  <script>
+    var Hyphenopoly = {
+        require: {
+            "en-us": "Supercalifragilisticexpialidocious"
+        },
+        setup: {
+            selectors: {
+                ".article-entry": {},
+                ".main-info": {}
+            }
+        }
+    };
+    </script>   
+    <script src="/js/Hyphenopoly_Loader.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="[Epistemic status: slightly rambly, mostly personal intuition and opinion that will probably be experimentally proven wrong within a year considering how fast stuff moves in this field] Thanks to Gwe">
+<meta name="keywords" content="Language Models,GPT-3,Alignment,Deep Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thoughts on the Alignment Implications of Scaling Language Models">
+<meta property="og:url" content="https://leogao.dev/2021/06/02/Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models/index.html">
+<meta property="og:site_name" content="Leo Gao">
+<meta property="og:description" content="[Epistemic status: slightly rambly, mostly personal intuition and opinion that will probably be experimentally proven wrong within a year considering how fast stuff moves in this field] Thanks to Gwe">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://leogao.dev/images/scaling_alignment/title.jpg">
+<meta property="og:image" content="https://leogao.dev/images/gpt3/perf_scaling_compute.png">
+<meta property="og:updated_time" content="2021-06-02T21:09:13.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Thoughts on the Alignment Implications of Scaling Language Models">
+<meta name="twitter:description" content="[Epistemic status: slightly rambly, mostly personal intuition and opinion that will probably be experimentally proven wrong within a year considering how fast stuff moves in this field] Thanks to Gwe">
+<meta name="twitter:image" content="https://leogao.dev/images/scaling_alignment/title.jpg">
+<meta name="twitter:creator" content="@nabla_theta">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo Gao" type="application/atom+xml">
+  
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="https://twitter.com/nabla_theta">Twitter</a>
+        
+          <a class="main-nav-link" href="https://github.com/leogao2">Github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <!--a id="nav-search-btn" class="nav-icon" title="Search"></a-->
+      </nav>
+      <!--div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://leogao.dev"></form>
+      </div-->
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <div class="article-date">
+  Created: <time datetime="2021-06-02T06:00:00.000Z" itemprop="datePublished">2021-06-02</time>&emsp;
+  Modified: <time datetime="2021-06-02T06:00:00.000Z" itemprop="datePublished">2021-06-02</time>
+</div>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Thoughts on the Alignment Implications of Scaling Language Models
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC -->
+        
+        <p><img src="/images/scaling_alignment/title.jpg" alt></p>
+<p>[Epistemic status: slightly rambly, mostly personal intuition and opinion that will probably be experimentally proven wrong within a year considering how fast stuff moves in this field]</p>
+<p><em>Thanks to Gwern Branwen, Steven Byrnes, Dan Hendrycks, Connor Leahy, Adam Shimi, Kyle and Laria for the insightful discussions and feedback.</em></p>
+<h2 id="Background"><strong>Background</strong></h2>
+<p>By now, most of you have probably heard about GPT-3 and what it does. There’s been a bunch of different opinions on what it means for alignment, and this post is yet another opinion from a slightly different perspective.</p>
+<p>Some background: I’m a part of EleutherAI, a decentralized research collective (read: glorified discord server - come join us on <a href="https://discord.gg/ejc9GWY" target="_blank" rel="noopener">Discord</a> for ML, alignment, and dank memes). We’re best known for our ongoing effort to create a GPT-3-like large language model, and so we have a lot of experience working with transformer models and looking at scaling laws, but we also take alignment very seriously and spend a lot of time thinking about it. (see <a href="https://blog.eleuther.ai/why-release-a-large-language-model/" target="_blank" rel="noopener">here</a> for an explanation of why we believe releasing a large language model is good for safety) The inspiration for this writing this document came out of the realization that there’s a lot of tacit knowledge and intuitions about scaling and LMs that’s being siloed in our minds that other alignment people might not know about, and so we should try to get that out there. (That being said, the contents of this post are of course only my personal intuitions at this particular moment in time and are definitely not representative of the views of all EleutherAI members.) I also want to lay out some potential topics for future research that might be fruitful.</p>
+<p>By the way, I did consider that the scaling laws implications might be an infohazard, but I think that ship sailed the moment the GPT-3 paper went live, and since we’ve already been in a race for parameters for some time (see: <a href="https://arxiv.org/abs/1909.08053" target="_blank" rel="noopener">Megatron-LM</a>, <a href="https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/" target="_blank" rel="noopener">Turing-NLG</a>, <a href="https://arxiv.org/abs/2101.03961" target="_blank" rel="noopener">Switch Transformer</a>, <a href="https://arxiv.org/abs/2104.12369" target="_blank" rel="noopener">PanGu-α/盘古α</a>, <a href="https://www.navercorp.com/promotion/pressReleasesView/30546" target="_blank" rel="noopener">HyperCLOVA</a>, <a href="https://zhuanlan.zhihu.com/p/377047779" target="_blank" rel="noopener">Wudao/悟道 2.0</a>, among others), I don’t really think this post is causing any non-negligible amount of desire for scaling.</p>
+<h2 id="Why-scaling-LMs-might-lead-to-Transformative-AI"><strong>Why scaling LMs might lead to Transformative AI</strong></h2>
+<h3 id="Why-natural-language-as-a-medium"><strong>Why natural language as a medium</strong></h3>
+<p>First, we need to look at why a perfect LM could in theory be Transformative AI. Language is an extremely good medium for representing complex, abstract concepts compactly and with little noise. Natural language seems like a very efficient medium for this; images, for example, are much less compact and don’t have as strong an intrinsic bias towards the types of abstractions we tend to draw in the world. This is not to say that we shouldn’t include images at all, though, just that natural language should be the focus.</p>
+<p>Since text is so flexible and good at being entangled with all sorts of things in the world, to be able to model text perfectly, it seems that you’d have to model all the processes in the world that are causally responsible for the text, to the “<strong>resolution</strong>” necessary for the model to be totally indistinguishable from the distribution of real text. For more intuition along this line, the excellent post <a href="https://generative.ink/posts/methods-of-prompt-programming/#the-reverse-engineered-dynamics-of-language" target="_blank" rel="noopener">Methods of prompt programming</a> explores, among other ideas closely related to the ideas in this post, a bunch of ways that reality is entangled with the textual universe<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>:</p>
+<blockquote>
+<p>A novel may attempt to represent psychological states with arbitrarily fidelity, and scientific publications describe models of reality on all levels of abstraction. […] A system which predicts the dynamics of language to arbitrary accuracy <em>does</em> require a theory of mind(s) and a theory of the worlds in which the minds are embedded. The dynamics of language do not float free from cultural, psychological, or physical context[.]</p>
+</blockquote>
+<h3 id="What-is-resolution"><strong>What is resolution</strong></h3>
+<p>I’m using <strong>resolution</strong> here to roughly mean how many different possible world-states get collapsed into the same textual result; data being high resolution would mean being able to narrow down the set of possible world states to a very small set.</p>
+<p>(Brief sidenote: this explanation of resolution isn’t mandatory for understanding the rest of the post so you can skip the rest of this section if you’re already convinced that it would be possible to make a LM have an internal world model. Also, this section is largely personal intuition and there isn’t much experimental evidence to either confirm or deny these intuitions (yet), so take this with a grain of salt)</p>
+<p>Here’s an example that conveys some of the intuition behind this idea of resolution and what it means for a system trying to model it. Imagine you’re trying to model wikipedia articles. There are several levels of abstraction this can be done on, all of which produce the <em>exact same</em> output but work very differently internally. You could just model the “text universe” of wikipedia articles—all of the correlations between words—and then leave it at that, never explicitly modelling anything at a higher level of abstraction. You could also model the things in the real world that the wikipedia articles are talking about as abstract objects with certain properties—maybe that’s sunsets, or Canadian geese, or cups of coffee—and then model the patterns of thought at the level of emotions and beliefs and thoughts of the humans as they observe these objects or phenomena and then materialize those thoughts into words. This still gets you the same distribution, but rather than modelling at the level of text, you’re modelling at the level of <em>human-level abstractions</em>, and also the process that converts those abstractions into text. Or you could model the position and momentum of every single particle in the Earth (ignoring quantum effects for the sake of this example), and then you could construct a ground up simulation of the entire Earth, which contains sunsets and geese and wikipedia editors.</p>
+<p>Obviously, the easiest way is to just model at the level of the text. Humans are just really complicated, and certainly modelling the entire universe is hugely overkill. But let’s say we now add a bunch of data generated by humans that has little mutual information with the wikipedia articles, like tweets. This increases the <em>resolution</em> of the data, because there are a bunch of world states you couldn’t tell apart before that you now can. For the text model, as far as it’s concerned, this data is totally unrelated to the wikipedia data, and it has to model it mostly separately except for maybe grammar. Meanwhile, the human-modelling system can largely reuse its model with only minor additions. (The universe model just flips a single flag corresponding to whether twitter data is recorded in the corpus).</p>
+<p>As you keep increasing the resolution by adding more and more data (such as books, images, videos, and scientific data) generated by the kinds of systems we care about, the cost of modelling the text universe rapidly increases, but the cost of modelling abstractions closer to reality increases much slower. An analogy here is if you only model a record of which side a flipped coin lands on, it’s cheaper to just use a random number generator to pick between heads and tails, instead of simulating all the physics of a coin toss. However, if you’re trying to model a 4k60fps video of a coin being flipped, you might instead want to actually simulate a coin being flipped and then deduce what the video should look like.</p>
+<p>Another way of looking at this is that resolution is how much Bayesian evidence about the universe can be obtained by updating on the dataset from a universal prior.</p>
+<p>You might be wondering why it matters what the model’s internal representation looks like if it outputs the exact same thing. Since having useful, disentangled internal models at roughly human-level abstractions is crucial for ideas like <a href="https://www.alignmentforum.org/posts/Nwgdq6kHke5LY692J/alignment-by-default" target="_blank" rel="noopener">Alignment By Default</a>, a model which can be harnessed through querying but which doesn’t contain useful internal models would be pretty good for capabilities (since it would be indistinguishable from one that does, if you just look at the output) and pretty bad for alignment, which is the worst case scenario in terms of the alignment-capabilities tradeoff. Also, it would be more brittle and susceptible to problems with off-distribution inputs, because it’s right for the wrong reasons, which also hurts safety. If models only ever learn to model the text universe, this problem might become very insidious because as LMs get bigger and learn more, more and more of the text universe will be “on-distribution” for it, making it feel as though the model has generalized to all the inputs we can think of giving it, but breaking the moment the world changes enough (i.e possibly because of the actions of an AI built using the LM, for example). Therefore, it’s very important for safety for our models to have approximately human level abstractions internally. Of course, internal models at the right level of abstraction isn’t a guarantee that the model will generalize to any given amount (<a href="https://www.lesswrong.com/posts/k54rgSg7GcjtXnMHX/model-splintering-moving-from-one-imperfect-model-to-another-1" target="_blank" rel="noopener">Model Splintering</a> will probably become an issue when things go really off-distribution), but the failure cases would likely be more predictable.</p>
+<p>In theory, you could also go <em>too high resolution</em> and end up with a model that models everything at the atomic level which is also kind of useless for alignment. In practice, though, this is likely less of a tradeoff and more of a “more resolution is basically always better” situation since even the highest resolution data we can possibly get is peanuts in the grand scheme of things.</p>
+<p>Another minor hitch is that the process through which physical events get picked up by humans and then converted into words is quite lossy and makes the resolution somewhat coarse; in other words, there are a lot of physical phenomena that we’d want our LM to understand but modelling what humans think about them is way easier than actually modelling the phenomena. This probably won’t be a problem in practice, though, and if it is we can always fix it by adding non-human-generated data about the phenomena in question.</p>
+<p>Thankfully, I don’t expect resolution to be a hard problem to solve in practice. Making the data harder to model is pretty easy. We could look towards massively multilingual data, since texts in all languages describe similar concepts at human abstraction levels but in a way that increases the complexity of the text itself significantly. We could even use images or video, which are pretty high resolution (pun not intended), available in large supply, and already being pursued by a bunch of people in the form of multimodal models.<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> The existence of <a href="https://distill.pub/2021/multimodal-neurons/" target="_blank" rel="noopener">Multimodal Neurons</a> implies that it’s possible for models to internally unify these different modalities into one internal representation.</p>
+<p>If that’s not enough, we could do some kind of augmentation or add synthetic data to the training set, designed in such a way that modelling the underlying processes that cause the synthetic data is significantly easier than directly modelling the distribution of text. There are a huge host of ways this could potentially be done, but here are a few random ideas: we could generate tons of sentences by randomly composing facts from something like <a href="https://en.wikipedia.org/wiki/Cyc" target="_blank" rel="noopener">Cyc</a>; augment data by applying different basic ciphers; or add automatically generated proofs of random statements using proof assistants like <a href="https://en.wikipedia.org/wiki/Lean_(proof_assistant)" target="_blank" rel="noopener">Lean</a>/<a href="https://en.wikipedia.org/wiki/Coq" target="_blank" rel="noopener">Coq</a>.</p>
+<h3 id="Where-scaling-laws-fit-in"><strong>Where scaling laws fit in</strong></h3>
+<p><img src="/images/gpt3/perf_scaling_compute.png" alt="Performance scales with compute. (&lt;a href='https://arxiv.org/abs/2005.14165'&gt;Source&lt;/a&gt;)"></p>
+<p>Of course, we don’t have perfect LMs (yet). The main evidence in practice for scaling LMs being a viable path to this ideal case is in scaling laws (<a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener">Scaling Laws for Neural Language Models</a>). Essentially, what the scaling laws show is that empirically, you can predict the optimal loss achievable for a certain amount of compute poured into the model with striking accuracy, and that this holds across several orders of magnitude.</p>
+<p>If you extrapolate the line out, it approaches zero as compute goes to infinity, which is totally impossible because natural language must have <em>some</em> nonzero irreducible loss. Therefore, at some point the scaling law must stop working. There are two main ways I could see this happen.</p>
+<h3 id="Scenario-1-Weak-capabilities-scenario"><strong>Scenario 1: Weak capabilities scenario</strong></h3>
+<p>One possible way is that the loss slowly peels away from the scaling law curve, until it either converges to some loss that isn’t the irreducible loss and refuses to go down further, or it approaches the irreducible loss but takes forever to converge, to the point that the resources necessary to get the loss close enough to irreducible for the level of capabilities we talk about in this post would be astronomically huge and not worth it. Of course, in practice since we don’t actually know what the irreducible loss is, these two cases will be pretty hard to tell apart, but the end result is the same: we keep scaling, and the models keep getting better, but never quite enough to do the world modelling-y things well enough to be useful, and eventually people give up and move on to something else.</p>
+<p>One main reason this would happen is that negative log likelihood loss rewards learning low order correlations much more than high order correlations; learning how to write a grammatically correct but factually incorrect paragraph achieves significantly better loss than a factually correct but grammatically incorrect paragraph. As such, models will learn all the low order correlations first before even thinking about higher order stuff- sort of like an <a href="https://en.wikipedia.org/wiki/Aufbau_principle" target="_blank" rel="noopener">Aufbauprinzip</a> for LMs. This is why models like GPT-3 have impeccable grammar and vocabulary but their long term coherence leaves something to be desired. At the extreme, a model might spend a ton of capacity on memorizing the names of every single town on Earth or learning how to make typos in exactly the same way as humans do before it even budges on learning anything more high-order like logical reasoning or physical plausibility. Since there’s just so many low order correlations to be learned, it might be that any model that we could reasonably ever train would get stuck here and would therefore never get to the high order correlations. (more on this idea of models learning low-order correlations first: <a href="https://www.gwern.net/Scaling-hypothesis#why-does-pretraining-work" target="_blank" rel="noopener">The Scaling Hypothesis</a>)</p>
+<p>Plus, once the model gets to high order correlations, it’s not entirely guaranteed it would actually be able to learn them easily. It would depend heavily on humans (and the things humans model, so basically most of the known world) being easy to model, which… doesn’t seem to be the case, but I leave open the possibility that this is my anthropocentrism speaking.</p>
+<p>Also, it might be that transformers and/or SGD just can’t learn high order correlations and reasoning at all, possibly because there are possibly architectural constraints of transformers that start kicking in at some point (see <a href="https://www.alignmentforum.org/posts/SkcM4hwgH3AP6iqjs/can-you-get-agi-from-a-transformer" target="_blank" rel="noopener">Can you get AGI from a Transformer?</a>). Some of these limitations might be fairly fundamental to how neural networks work and prevent <em>any</em> replacement architecture from learning high order reasoning.</p>
+<p>If this scenario happens, then LMs will never become very capable or dangerous and therefore will not need to be aligned.</p>
+<h3 id="Scenario-2-Strong-capabilities-scenario"><strong>Scenario 2: Strong capabilities scenario</strong></h3>
+<p>The other way is the model could follow the scaling law curve perfectly until it gets to the irreducible loss, and then forever cease to improve. This scenario could also happen if there’s an asymptotic approach to the irreducible loss that’s fast enough that with a reasonable amount of compute we can get the level of capabilities discussed in this post, which is arguably more likely for higher resolution data because it would be harder to model. This case would happen if past a certain critical size, the model is able to entirely learn the process that generates the text (i.e the humans writing text, and the systems that these humans are able to observe and model) down to the resolution permissible by text. This scenario would be… kind of scary, because it would mean that scaling is literally all we need, and that we don’t even need that much more scaling before we’re “there”.</p>
+<p>In this scenario, the prioritization of low-order correlations due to the negative log likelihood loss implies that high order traits will only improve slowly for potentially many orders of magnitude as the model is slowly able to memorize more and more inane things like the names of every famous person ever until suddenly it runs out of low hanging fruit and starts improving at constructing flawless logical deductions. This is, needless to say, <em>totally different</em> from how humans learn language or reasoning, and has led to a lot of both under and overestimating of GPT-3’s capabilities. In fact, a lot of arguments about GPT-3 look like one person arguing that it must already be superintelligent because it uses language flawlessly and someone else arguing that since it has the physical/logical reasoning capabilities of a 3 year old, it’s actually extremely unintelligent. This is especially dangerous because we will severely underestimate the reasoning potential of LMs right up until the last moment when the model runs out of low order correlations. There would be very little warning even just shortly before it started happening, and probably no major change in train/val loss trend during, though there would be a huge difference in downstream evaluations and subjective generation quality.</p>
+<p>And that’s all assuming we keep using negative log likelihood. There remains the possibility that there exists a loss function that does actually upweight logical coherence, etc, which would completely invalidate this intuition, and bring highly intelligent LMs even <em>faster</em>. On the bright side there’s the possibility this might be a positive, because it would likely lead to models with richer, more disentangled models inside of them, which would be useful for alignment as I mentioned earlier, though I don’t think this is nearly enough to cancel out the huge negative of advancing capabilities so much. Thankfully, it seems like the reason such a loss function doesn’t exist yet isn’t from lack of trying, it’s just really hard to make work.</p>
+<p>To see just how much a different loss function could help, consider that cherrypicking from n samples is actually just a way of applying roughly (\log n) bits of optimization pressure to the model, modulo some normalization factors (I also talk about this intuition in footnote 2 of <a href="https://bmk.sh/2020/08/17/Building-AGI-Using-Language-Models/" target="_blank" rel="noopener">Building AGI Using Language Models</a>). Since even lightly cherrypicked samples of GPT-3 are a lot more coherent than raw samples, I expect that this means we’re probably not too far from a huge boost in coherence if we figure out how to apply the right optimization. This of course only provides a lower bound for how much the negative log likelihood loss needs to improve to get the same level of coherence, because it doesn’t align with our notion of quality exactly, as previously mentioned—the model could happily improve log n bits by memorizing random stuff rather than improving coherence.</p>
+<p>I also think it’s very unlikely that we will run into some totally insurmountable challenge with transformers or SGD that doesn’t get patched over within a short period of time. This is mostly because historically, betting that there’s something NNs fundamentally can’t do is usually not a good bet, and every few years (or, increasingly, months) someone comes up with a way to surmount the previous barrier for NNs.</p>
+<p>As one final piece of evidence, the scaling law and GPT-3 papers show that as your model gets bigger, it actually gets <a href="https://arxiv.org/pdf/2001.08361.pdf#page=4" target="_blank" rel="noopener"><em>more sample efficient</em></a>. To me this is <em>a priori</em> very counterintuitive given the curse of dimensionality. This seems to imply that bigger models are favored by the inductive biases of SGD, and to me suggests that bigger is the right direction to go.</p>
+<p>If this scenario happens, we’re probably screwed if we don’t plan for it, and even if we do plan we might still be screwed.</p>
+<h2 id="What-should-we-do"><strong>What should we do?</strong></h2>
+<p>There are a number of possible alignment strategies depending on how LMs scale and what the properties of bigger LMs are like. This list is neither exhaustive nor objective, these are just a few possible outcomes that take up a good chunk of my probability mass at this moment in time and my opinions at this time.</p>
+<h3 id="Reward-model-extraction"><strong>Reward model extraction</strong></h3>
+<p>Possibly the most interesting (and risky) direction in my opinion, which I mentioned briefly earlier, is trying to extract some reward model for human values or even something like <a href="https://intelligence.org/files/CEV.pdf" target="_blank" rel="noopener">CEV</a> out of a big LM that has already learned to model the world. This idea comes from <a href="https://www.alignmentforum.org/posts/Nwgdq6kHke5LY692J/alignment-by-default" target="_blank" rel="noopener">Alignment by Default</a> (henceforth AbD for short), where we build some model and train it in a way such that it builds up an internal world model of what the AbD post calls “natural abstractions” (in the language of this post, those would be human-level abstractions that happen to be described in high resolution in natural language and are therefore more easily learned), and then we find some way to point to or extract the reward model we want inside that LM’s world model. One way this could be accomplished, as outlined in the AbD post, is to find some proxy for the reward signal we want and fine tune the LM on that proxy and hope that the model decides to point to an internal reward model. It might also turn out that there are other ways to do this, maybe by using interpretability tools to identify the subnetworks responsible for the LM’s understanding of CEV, or perhaps involve optimizing a continuous prompt to “select” the right part of the LM (<a href="https://arxiv.org/abs/2104.08691" target="_blank" rel="noopener">The Power of Scale for Parameter-Efficient Prompt Tuning</a>, <a href="https://arxiv.org/abs/2102.07350" target="_blank" rel="noopener">Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm</a>).</p>
+<p>I expect making a LM that forms a usable internal model of some useful reward signal inside itself to be very difficult in practice and require a lot of trial and error, possibly requiring custom training data or methods to make the resolution for that reward signal much higher. As an aside, I think this is one major advantage of thinking in terms of resolution: since resolution is relative to the data, we don’t have to just hope that any given abstraction is natural; we can actually make certain abstractions “more natural” for AbD if we want, just by changing the data! The other major issue with this approach is that there’s no guarantee that a model extracted from a LM will be at all robust to being subject to optimization pressures, and certainly I wouldn’t expect this to work as a strong alignment solution, but rather just as a way to bootstrap strong alignment, since the goal of <em>any</em> LM based system, in my opinion, would be to build a weakly-aligned system with the main purpose of solving strong alignment (i.e I think <a href="https://www.lesswrong.com/posts/teCsd4Aqg9KDxkaC9/bootstrapped-alignment" target="_blank" rel="noopener">Bootstrapped Alignment</a> is a good idea). That being said, I still think it would be significantly more robust than anything handcrafted because human values are very complex and multifaceted (<a href="https://www.lesswrong.com/posts/cSXZpvqpa9vbGGLtG/thou-art-godshatter" target="_blank" rel="noopener">Thou Art Godshatter</a>), and learned systems generally do better at understanding complex systems than handcrafted systems (<a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank" rel="noopener">The Bitter Lesson</a>). Also, it’s likely that in practice this extracted reward model wouldn’t be optimized against directly, but rather used as a component of a larger reward system.</p>
+<p>This may sound similar to regular value learning, but I would argue this has the potential to be significantly more powerful because we aren’t just confined to the revealed preferences of humans but theoretically any consistent abstract target that can be embedded in natural language, even if we can’t formalize it, and the resulting model would hopefully be goodhart-robust enough for us to use it to solve strong alignment. Of course, this sounds extremely lofty and you should be skeptical; I personally think this has a low chance (10%ish) of actually working out, since a lot of things need to go right, but I still think more work in this direction would be a good idea.</p>
+<p>Some <em>very</em> preliminary work in this direction can be seen in <a href="https://generative.ink/posts/gpt-3-on-coherent-extrapolated-volition/" target="_blank" rel="noopener">GPT-3 on Coherent Extrapolated Volition</a>, where it is shown that GPT-3 has at least some rudimentary understanding of what CEV is, though not nearly enough yet. The <a href="https://arxiv.org/abs/2008.02275" target="_blank" rel="noopener">ETHICS</a> dataset also seems like a good proxy for use in some kind of fine-tuning based AbD scheme.</p>
+<p>Some concrete research directions for this approach: interpretability work to try and identify useful models inside current LMs like GPT-2/3; implementing some rudimentary form of AbD to try and extract a model of something really simple; messing around with dataset compositions/augmentations to improve performance on world-modelling tasks (i.e PiQA, Winograd schemas, etc), which is hopefully a good proxy for internal model quality.</p>
+<h3 id="Human-emulation"><strong>Human emulation</strong></h3>
+<p>We could also just have the LM emulate Einstein, except with the combined knowledge of humanity, and at 1000x speed, or emulate a bunch of humans working together, or something similar. How aligned this option is depends a lot on how aligned you think humans are, and on how high fidelity the simulation is. Humans are not very strongly aligned (i.e you can’t apply a lot of optimization pressure to the human reward function and get anything remotely resembling CEV): humans are susceptible to wireheading and cognitive biases, have their own inner alignment problems (<a href="https://www.alignmentforum.org/posts/DWFx2Cmsvd4uCKkZ4/inner-alignment-in-the-brain" target="_blank" rel="noopener">Inner alignment in the brain</a>), and so on (also related: <a href="https://www.alignmentforum.org/posts/2NaAhMPGub8F2Pbr7/the-fusion-power-generator-scenario" target="_blank" rel="noopener">The Fusion Power Generator Scenario</a>). Still, emulated humans are still more aligned than a lot of other possibilities, and it’s possible that this is the best option we have if a lot of the other options don’t pan out. Another limitation of human emulation is there’s an inherent ceiling to how capable the system can get, but I wouldn’t worry too much about it because it would probably be enough to bootstrap strong alignment. Related posts in this direction: <a href="https://www.alignmentforum.org/posts/Gfw7JMdKirxeSPiAk/solving-the-whole-agi-control-problem-version-0-0001#4_1_Imitation" target="_blank" rel="noopener">Solving the whole AGI control problem, version 0.0001 - Imitation</a></p>
+<p>A minor modification to this would be to emulate other nonhuman agents, whether through prompting, RL finetuning, or whatever the best way to do so is. The major problems here are that depending on the details, nonhuman agents might be harder to reason about and harder to get the LM to emulate since they’d be off distribution, but this might end up as a useful tool as part of some larger system.</p>
+<p>Some concrete research directions for this approach: exploring prompt engineering or training data engineering to see how we can reliably get GPT-3 and similar LMs to act human-like; developing better metrics that capture human emulation quality better.</p>
+<h3 id="Human-amplification"><strong>Human amplification</strong></h3>
+<p>This option encompasses things like IDA and (to a lesser extent) Debate where we rely on human judgement as a component of the AI system, and use the LMs as the magic black box that imitates humans in IDA or the debaters in Debate. How aligned this option is depends a lot on how aligned IDA and Debate are (and how aligned people are). Also, depending on how true the factored cognition hypothesis is, there may be serious limits to how capable these systems can get, though conditioning on IDA working at all, I don’t think it’s likely that this will be a bottleneck for the same reasons as in the previous sections. Some kind of human amplification strategy does feel like the most established and “down to earth” of the proposals despite all this, however. Overall, I’m cautiously optimistic about IDA/Debate-like systems using LMs.</p>
+<p>The feasibility of this option is also correlated with the last option (human emulation) because this is essentially putting (partial) human emulation in a loop.</p>
+<p>Some concrete research directions for this approach: implementing IDA for some kind of toy task using GPT-3 or similar LMs, possibly doing some kind of augmentation and/or retrieval system to squeeze the most out of the human data from the amplification step.</p>
+<h3 id="Oracle-STEM-AI"><strong>Oracle / STEM AI</strong></h3>
+<p>Another option that has been proposed for making safe AI systems is to make an “oracle” only able to answer questions and with only the goal of answering those questions as accurately as possible. A specific variant of this idea is the STEM AI proposal (name taken from <a href="https://www.alignmentforum.org/posts/fRsjBseRuvRhMPPE5/an-overview-of-11-proposals-for-building-safe-advanced-ai" target="_blank" rel="noopener">An overview of 11 proposals for building safe advanced AI</a>, though this idea is nothing new), which is essentially an oracle with a domain limited to only scientific questions, with the hope that it never gets good enough at modelling humans to deceive us.</p>
+<p>A bunch of people have argued for various reasons why oracle/tool AI isn’t necessarily safe or economically competitive (for a small sampling: <a href="https://www.lesswrong.com/posts/SwcyMEgLyd4C3Dern/the-parable-of-predict-o-matic" target="_blank" rel="noopener">The Parable of Predict-O-Matic</a>, <a href="https://www.alignmentforum.org/posts/6WbLRLdmTL4JxxvCq/analysing-dangerous-messages-from-future-ufai-via-oracles" target="_blank" rel="noopener">Analysing: Dangerous messages from future UFAI via Oracles</a>, <a href="https://www.alignmentforum.org/posts/sizjfDgCgAsuLJQmm/reply-to-holden-on-tool-ai" target="_blank" rel="noopener">Reply to Holden on ‘Tool AI’</a>, <a href="https://www.gwern.net/Tool-AI" target="_blank" rel="noopener">Why Tool AIs Want to Be Agent AIs</a>). I would argue that most of the safety concerns only apply to extremely strong alignment, and that oracles are probably safe <em>enough</em> for weak alignment, though I’m not very confident in this and I’m open to being proven wrong. This is the option that is most likely to happen by default, though, since even GPT-3 exhibits oracle-ish behavior with minimal prompting, whereas the other options I discussed are all various stages of theoretical. As such it makes sense to plan for what to do just in case this is the only option left.</p>
+<p>Some concrete research directions for this approach: exploring prompt engineering to see how we can reliably get GPT-3 and similar LMs to give its best-guess rather than what it thinks the median internet user would tend to say; exploring ways to filter training data for STEM-only data and looking at whether this actually pushes the model’s understandings of various topics in the direction we expect (<a href="https://arxiv.org/abs/2009.03300" target="_blank" rel="noopener">Measuring Massive Multitask Language Understanding</a> introduces a very fine grained evaluation which may be useful for something like this); interpretability work to see how the model represents knowledge and reasoning, so that we could possibly extract novel knowledge out of the model without even needing to query it (something like <a href="https://arxiv.org/abs/2104.08696" target="_blank" rel="noopener">Knowledge Neurons in Pretrained Transformers</a> seems like a good place to start).</p>
+<h2 id="Conclusion"><strong>Conclusion</strong></h2>
+<p>Natural language is an extremely versatile medium for representing abstract concepts and therefore given sufficiently high resolution data a language model will necessarily have to learn to represent and manipulate abstract concepts to improve loss beyond a certain point. Additionally, from the evidence we have from scaling laws, there is a fairly good chance that we will find ourselves in the strong capabilities scenario where this point is crossed only a few orders of magnitude in size from now, resulting in large language models quickly gaining capabilities, and making the first transformational AI a large language model. Finally, there are a number of existing prosaic alignment directions that are amenable to being applied to language models, which I hope will be explored further in the future.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>That post covers many of the same ideas as this post; one main area where my opinion differs slightly is that I don’t think that any LM will <em>necessarily</em> form the abstractions that we want, and I introduce this idea of resolution as a caveat to weaken the claim a bit. However, I agree that this should be pretty easily fixable; the next section covers this caveat in more detail. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Resolution is also esstentially a generalized version of the idea of multimodal grounding. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leogao.dev/2021/06/02/Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models/" data-id="ckpfzorjc000cqtfmeqq8ldp2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Alignment/">Alignment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPT-3/">GPT-3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language-Models/">Language Models</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/17/Building-AGI-Using-Language-Models/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Building AGI Using Language Models</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside class="sidebar sidebar-left">
+    <div class="">
+        <!--div class="mainnav">
+            <p><a href='/' class="mainnav-link">Home</a></p>
+            
+        </div-->
+    </div>
+    <div class="leftfnbegin"></div>
+    <div class="sidebar-left-footnotes"></div>
+</aside>
+<aside class="sidebar sidebar-right">
+    
+      
+  <div class="widget-wrap sidebar-align">
+    <h3 class="widget-title">About Me</h3>
+    <ul class="about-me">
+      
+      <li><div class="avatar"><img class="ava-img" title="About me" src="/images/profile_small.png" /></div></li>
+      
+      <div class="authname">Leo Gao</div>
+      <div class="sdesc"></div>
+
+      <div class="contact">
+          <div class="contact-item"><a href="https://twitter.com/nabla_theta"><i class="fa fa-twitter" aria-hidden="true"></i> @nabla_theta</a></div>
+          <div class="contact-item"><a href="https://github.com/leogao2"><i class="fa fa-github" aria-hidden="true"></i> leogao2</a></div>
+          <div class="contact-item"><a href="mailto:leogao31@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> leogao31@gmail.com</a></div>
+      </div>
+    </ul>
+
+
+  </div>
+  
+    
+      
+  <div class="widget-wrap sidebar-align">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget recentposts">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/02/Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models/">Thoughts on the Alignment Implications of Scaling Language Models</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/17/Building-AGI-Using-Language-Models/">Building AGI Using Language Models</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/29/GPT-3-A-Brief-Summary/">Why GPT-3 Matters</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/01/Breaking-Down-Reddit-s-Imposter/">Breaking Down Reddit&#39;s Imposter</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/31/Multidisk-Filesystems-A-Comparison/">Multidisk Filesystems: A Comparison</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+    <div class="rightfnbegin"></div>
+    <div class="sidebar-right-footnotes"></div>
+
+</aside>
+
+<div class="mobile-fn-float-wrapper">
+    <div class="mobile-fn-float">
+        <div class="footnote-float-numeral footnote-float-numeral-mobile"></div>
+        <div class="footnote-float-content"></div>
+        <div class="footnote-float-overflow">...</div>
+    </div>
+</div>
+        
+      </div>
+      <!--
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Leo Gao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+-->
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="https://twitter.com/nabla_theta" class="mobile-nav-link">Twitter</a>
+  
+    <a href="https://github.com/leogao2" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/footnotes.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="/js/acronym-fancifier.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2020-08-20T03:54:57.851Z</updated>
+  <updated>2021-06-02T21:09:13.999Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Thoughts on the Alignment Implications of Scaling Language Models</title>
+    <link href="https://leogao.dev/2021/06/02/Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models/"/>
+    <id>https://leogao.dev/2021/06/02/Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models/</id>
+    <published>2021-06-02T06:00:00.000Z</published>
+    <updated>2021-06-02T21:09:13.999Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/images/scaling_alignment/title.jpg&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;[Epistemic status: slightly rambly, mostly personal intuition and opinion
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
+      <category term="GPT-3" scheme="https://leogao.dev/tags/GPT-3/"/>
+    
+      <category term="Alignment" scheme="https://leogao.dev/tags/Alignment/"/>
+    
+      <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Building AGI Using Language Models</title>
@@ -165,9 +197,9 @@
     
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
-      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
-    
       <category term="Deep Learning" scheme="https://leogao.dev/tags/Deep-Learning/"/>
+    
+      <category term="Reinforcement Learning" scheme="https://leogao.dev/tags/Reinforcement-Learning/"/>
     
   </entry>
   
