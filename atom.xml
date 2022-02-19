@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://leogao.dev/"/>
-  <updated>2021-06-02T21:09:13.999Z</updated>
+  <updated>2022-02-19T05:52:00.889Z</updated>
   <id>https://leogao.dev/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://leogao.dev/2021/06/02/Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models/"/>
     <id>https://leogao.dev/2021/06/02/Thoughts-on-the-Alignment-Implications-of-Scaling-Language-Models/</id>
     <published>2021-06-02T06:00:00.000Z</published>
-    <updated>2021-06-02T21:09:13.999Z</updated>
+    <updated>2022-02-19T05:52:00.889Z</updated>
     
     <summary type="html">
     
@@ -53,7 +53,7 @@
     <link href="https://leogao.dev/2020/08/17/Building-AGI-Using-Language-Models/"/>
     <id>https://leogao.dev/2020/08/17/Building-AGI-Using-Language-Models/</id>
     <published>2020-08-17T06:00:00.000Z</published>
-    <updated>2020-08-20T03:54:57.851Z</updated>
+    <updated>2022-02-19T05:52:00.889Z</updated>
     
     <summary type="html">
     
@@ -85,7 +85,7 @@
     <link href="https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/"/>
     <id>https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/</id>
     <published>2020-05-29T06:00:00.000Z</published>
-    <updated>2020-07-20T18:42:10.773Z</updated>
+    <updated>2022-02-19T05:52:00.885Z</updated>
     
     <summary type="html">
     
@@ -114,7 +114,7 @@
     <link href="https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/"/>
     <id>https://leogao.dev/2020/04/01/Breaking-Down-Reddit-s-Imposter/</id>
     <published>2020-04-01T06:00:00.000Z</published>
-    <updated>2020-04-07T16:24:50.365Z</updated>
+    <updated>2022-02-19T05:52:00.885Z</updated>
     
     <summary type="html">
     
@@ -131,11 +131,11 @@
     
     
     
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
       <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
-    
-      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
@@ -148,7 +148,7 @@
     <link href="https://leogao.dev/2020/01/31/Multidisk-Filesystems-A-Comparison/"/>
     <id>https://leogao.dev/2020/01/31/Multidisk-Filesystems-A-Comparison/</id>
     <published>2020-01-31T07:00:00.000Z</published>
-    <updated>2020-05-09T17:30:39.195Z</updated>
+    <updated>2022-02-19T05:52:00.885Z</updated>
     
     <summary type="html">
     
@@ -176,7 +176,7 @@
     <link href="https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/"/>
     <id>https://leogao.dev/2019/12/31/The-Decade-of-Deep-Learning/</id>
     <published>2019-12-31T07:00:00.000Z</published>
-    <updated>2020-08-20T03:56:09.258Z</updated>
+    <updated>2022-02-19T05:52:00.885Z</updated>
     
     <summary type="html">
     
@@ -208,7 +208,7 @@
     <link href="https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/"/>
     <id>https://leogao.dev/2019/11/09/Converting-HuggingFace-GPT2-Models-to-Tensorflow-1/</id>
     <published>2019-11-09T07:00:00.000Z</published>
-    <updated>2020-04-07T16:33:31.843Z</updated>
+    <updated>2022-02-19T05:52:00.885Z</updated>
     
     <summary type="html">
     
@@ -224,9 +224,9 @@
     
     
     
-      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
-    
       <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
+      <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
@@ -237,7 +237,7 @@
     <link href="https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/"/>
     <id>https://leogao.dev/2019/10/27/The-Difficulties-of-Text-Generation-with-Autoregressive-Language-Models/</id>
     <published>2019-10-27T06:00:00.000Z</published>
-    <updated>2020-06-14T20:10:26.987Z</updated>
+    <updated>2022-02-19T05:52:00.885Z</updated>
     
     <summary type="html">
     
@@ -254,11 +254,11 @@
     
     
     
+      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
+    
       <category term="Machine Learning" scheme="https://leogao.dev/tags/Machine-Learning/"/>
     
       <category term="Natural Language Processing" scheme="https://leogao.dev/tags/Natural-Language-Processing/"/>
-    
-      <category term="Language Models" scheme="https://leogao.dev/tags/Language-Models/"/>
     
       <category term="GPT-2" scheme="https://leogao.dev/tags/GPT-2/"/>
     
@@ -271,7 +271,7 @@
     <link href="https://leogao.dev/2019/09/20/Hello-World/"/>
     <id>https://leogao.dev/2019/09/20/Hello-World/</id>
     <published>2019-09-20T06:00:00.000Z</published>
-    <updated>2020-04-02T05:57:10.361Z</updated>
+    <updated>2022-02-19T05:52:00.885Z</updated>
     
     <summary type="html">
     
